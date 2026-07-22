@@ -11,26 +11,114 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Fetch a value from the ACF Options page with a safe fallback.
+ * Fetch a clinic setting from the native Dane gabinetu options page.
  * Used everywhere NAP/contact data is needed: header, footer,
  * contact section, JSON-LD schema — single source of truth.
  *
- * @param string $field_key ACF field name on the Options page.
- * @param mixed  $fallback  Value returned if ACF/field is unavailable.
+ * @param string $field_key Option key (e.g. clinic_phone, clinic_hours).
+ * @param mixed  $fallback  Value returned if the option is empty.
  * @return mixed
  */
 function sw_get_option( $field_key, $fallback = '' ) {
-	if ( function_exists( 'get_field' ) ) {
-		$value = get_field( $field_key, 'option' );
-		if ( ! empty( $value ) ) {
-			return $value;
-		}
+	$options = get_option( 'sw_clinic', array() );
+	if ( ! is_array( $options ) ) {
+		$options = array();
 	}
+
+	if ( array_key_exists( $field_key, $options ) && '' !== $options[ $field_key ] && null !== $options[ $field_key ] ) {
+		// Empty arrays (e.g. clinic_hours with no rows) should fall through.
+		if ( is_array( $options[ $field_key ] ) && empty( $options[ $field_key ] ) ) {
+			return $fallback;
+		}
+		return $options[ $field_key ];
+	}
+
 	return $fallback;
 }
 
 /**
- * Format a Polish phone number as a tel: href, e.g. "62 123 45 67" -> "+4862123456­7".
+ * Build trust-bar stats from fixed ACF Free slots (trust_1_* … trust_4_*).
+ *
+ * @return array<int, array{icon:string,value:string,label:string}>
+ */
+function sw_get_trust_stats() {
+	$stats = array();
+
+	if ( ! function_exists( 'get_field' ) ) {
+		return $stats;
+	}
+
+	for ( $i = 1; $i <= 4; $i++ ) {
+		$value = get_field( 'trust_' . $i . '_value' );
+		if ( empty( $value ) ) {
+			continue;
+		}
+		$stats[] = array(
+			'icon'  => get_field( 'trust_' . $i . '_icon' ) ?: 'star',
+			'value' => $value,
+			'label' => get_field( 'trust_' . $i . '_label' ) ?: '',
+		);
+	}
+
+	return $stats;
+}
+
+/**
+ * Build why-us points from fixed ACF Free slots (why_us_1_* … why_us_3_*).
+ *
+ * @return array<int, array{title:string,description:string}>
+ */
+function sw_get_why_us_points() {
+	$points = array();
+
+	if ( ! function_exists( 'get_field' ) ) {
+		return $points;
+	}
+
+	for ( $i = 1; $i <= 3; $i++ ) {
+		$title = get_field( 'why_us_' . $i . '_title' );
+		if ( empty( $title ) ) {
+			continue;
+		}
+		$points[] = array(
+			'title'       => $title,
+			'description' => get_field( 'why_us_' . $i . '_description' ) ?: '',
+		);
+	}
+
+	return $points;
+}
+
+/**
+ * Build gallery before/after pairs from fixed ACF Free slots (gallery_1_* … gallery_3_*).
+ *
+ * @return array<int, array{before:int,after:int,label:string}>
+ */
+function sw_get_gallery_pairs() {
+	$pairs = array();
+
+	if ( ! function_exists( 'get_field' ) ) {
+		return $pairs;
+	}
+
+	for ( $i = 1; $i <= 3; $i++ ) {
+		$before = get_field( 'gallery_' . $i . '_before' );
+		$after  = get_field( 'gallery_' . $i . '_after' );
+		if ( empty( $before ) || empty( $after ) ) {
+			continue;
+		}
+		$pairs[] = array(
+			'before' => $before,
+			'after'  => $after,
+			'label'  => get_field( 'gallery_' . $i . '_label' ) ?: '',
+		);
+	}
+
+	return $pairs;
+}
+
+/**
+ * Format a Polish phone number as a tel: href, e.g. "62 123 45 67" -> "tel:+48621234567".
  *
  * @param string $phone_display Human-readable phone number.
  * @return string
@@ -58,7 +146,7 @@ function sw_image( $attachment_id, $size = 'sw-card', $eager = false, $attrs = a
 	}
 
 	$default_attrs = array(
-		'loading' => $eager ? 'eager' : 'lazy',
+		'loading'  => $eager ? 'eager' : 'lazy',
 		'decoding' => 'async',
 	);
 
@@ -75,7 +163,7 @@ function sw_image( $attachment_id, $size = 'sw-card', $eager = false, $attrs = a
 }
 
 /**
- * Truthy check for ACF repeater/relationship fields so templates can
+ * Truthy check for array-based field collections so templates can
  * write clean `if ( sw_has_rows( $field ) )` guards.
  *
  * @param mixed $rows

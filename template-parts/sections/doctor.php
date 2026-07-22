@@ -1,7 +1,7 @@
 <?php
 /**
  * Doctor / team teaser — right-hand column of the "Dlaczego my" band.
- * Data: relationship field 'featured_team_member' on the front page,
+ * Data: post_object field 'featured_team_member' on the front page,
  * falling back to the CPT's own 'featured_on_homepage' flag if unset.
  *
  * @package StomatologiaWiacek
@@ -11,11 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$featured = get_field( 'featured_team_member' );
+$featured = function_exists( 'get_field' ) ? get_field( 'featured_team_member' ) : null;
 $doctor   = null;
 
-if ( sw_has_rows( $featured ) ) {
-	$doctor = $featured[0];
+if ( $featured instanceof WP_Post ) {
+	$doctor = $featured;
+} elseif ( is_numeric( $featured ) ) {
+	$doctor = get_post( (int) $featured );
 } else {
 	$fallback = new WP_Query( array(
 		'post_type'      => 'team_member',

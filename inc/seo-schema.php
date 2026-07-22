@@ -2,7 +2,7 @@
 /**
  * JSON-LD structured data output.
  *
- * - Dentist / LocalBusiness: sitewide, built from the ACF Options page
+ * - Dentist / LocalBusiness: sitewide, built from Dane gabinetu settings
  *   so schema and visible NAP data can never drift apart.
  * - FAQPage: generated dynamically from the FAQ CPT loop, only on
  *   templates that render the FAQ accordion.

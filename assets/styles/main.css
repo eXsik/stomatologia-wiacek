@@ -5,6 +5,7 @@
  * ships to the browser instead of a dozen @import chains.
  */
 
+@import 'base/_variables.css';
 @import 'base/_reset.css';
 @import 'base/_typography.css';
 @import 'layout/_grid.css';

@@ -1,7 +1,7 @@
 <?php
 /**
  * Before/after gallery teaser.
- * Data: ACF gallery field on front page ('gallery_pairs'), capped to 3.
+ * Data: fixed ACF Free slots (gallery_1_* … gallery_3_*) on the front page.
  * Sets a flag so enqueue.php conditionally loads gallery-slider.js —
  * this script is never shipped on pages without a gallery.
  *
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$pairs = get_field( 'gallery_pairs' );
+$pairs = sw_get_gallery_pairs();
 
 if ( sw_has_rows( $pairs ) ) {
 	$GLOBALS['sw_needs_gallery_script'] = true;
@@ -24,7 +24,7 @@ if ( sw_has_rows( $pairs ) ) {
 
 		<?php if ( sw_has_rows( $pairs ) ) : ?>
 			<div class="sw-gallery-teaser__row" data-sw-gallery-slider>
-				<?php foreach ( array_slice( $pairs, 0, 3 ) as $pair ) : ?>
+				<?php foreach ( $pairs as $pair ) : ?>
 					<figure class="sw-gallery-teaser__pair">
 						<?php sw_image( $pair['before'], 'sw-card' ); ?>
 						<?php sw_image( $pair['after'], 'sw-card' ); ?>

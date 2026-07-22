@@ -39,6 +39,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$hours = sw_get_option( 'clinic_hours', array() );
 					if ( sw_has_rows( $hours ) ) :
 						foreach ( $hours as $row ) :
+							if ( empty( $row['day'] ) || empty( $row['open'] ) || empty( $row['close'] ) ) {
+								continue;
+							}
 							?>
 							<li><span><?php echo esc_html( $row['day'] ); ?></span> <span><?php echo esc_html( $row['open'] . '–' . $row['close'] ); ?></span></li>
 							<?php

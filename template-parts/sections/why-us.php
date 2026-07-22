@@ -1,7 +1,7 @@
 <?php
 /**
  * "Dlaczego my" differentiators section.
- * Data: small ACF repeater — not a CPT, unlikely to need full CMS treatment.
+ * Data: fixed ACF Free slots (why_us_1_* … why_us_3_*).
  *
  * @package StomatologiaWiacek
  */
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$points = get_field( 'why_us_points' );
+$points = sw_get_why_us_points();
 
 if ( ! sw_has_rows( $points ) ) {
 	$points = array(
