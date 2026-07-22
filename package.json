@@ -1,0 +1,18 @@
+{
+  "name": "stomatologia-wiacek-redesign",
+  "version": "1.0.0",
+  "description": "Portfolio redesign concept theme — build scripts for production CSS/JS bundling.",
+  "private": true,
+  "scripts": {
+    "build:css": "postcss assets/styles/main.css -o assets/styles/main.min.css --use cssnano --use postcss-import",
+    "build:js": "esbuild assets/scripts/main.js --bundle --minify --outfile=assets/scripts/main.min.js",
+    "build": "npm run build:css && npm run build:js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.0",
+    "postcss": "^8.4.0",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.0.0",
+    "cssnano": "^7.0.0"
+  }
+}

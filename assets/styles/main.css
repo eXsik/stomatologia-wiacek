@@ -1,0 +1,54 @@
+/**
+ * Development entry point — imports every partial for readability.
+ * In production this is compiled + minified into main.min.css by the
+ * build step (see package.json build script), so only one request
+ * ships to the browser instead of a dozen @import chains.
+ */
+
+@import 'base/_reset.css';
+@import 'base/_typography.css';
+@import 'layout/_grid.css';
+@import 'layout/_header.css';
+@import 'layout/_footer.css';
+@import 'components/_buttons.css';
+@import 'components/_cards.css';
+@import 'components/_accordion.css';
+@import 'components/_forms.css';
+@import 'utilities/_utilities.css';
+
+/* Doctor teaser + why-us pairing (component-specific, small enough
+   not to warrant its own file per the ITCSS layering) */
+.sw-doctor-teaser__card {
+	display: flex;
+	gap: var(--space-3);
+	align-items: flex-start;
+	background: var(--color-surface);
+	padding: var(--space-4);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-sm);
+}
+
+.sw-doctor-teaser__photo {
+	border-radius: 50%;
+	width: 72px;
+	height: 72px;
+	object-fit: cover;
+	flex-shrink: 0;
+}
+
+.sw-doctor-teaser__name {
+	font-weight: 600;
+	font-family: var(--font-heading);
+}
+
+.sw-doctor-teaser__role {
+	font-size: var(--fs-sm);
+	color: var(--color-primary);
+	margin-bottom: var(--space-2);
+}
+
+.sw-doctor-teaser__bio {
+	font-size: var(--fs-sm);
+	color: var(--color-text-muted);
+	margin-bottom: var(--space-2);
+}

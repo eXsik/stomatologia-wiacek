@@ -1,0 +1,17 @@
+/*
+Theme Name:   Stomatologia Wiacek – Redesign Concept
+Theme URI:    https://github.com/yourusername/stomatologia-wiacek-redesign
+Author:       Your Name
+Author URI:   https://yourportfolio.dev
+Description:  Unofficial front-end/WordPress redesign concept portfolio project for Stomatologia Wiacek (Ostrow Wielkopolski). Not affiliated with the practice. Built to demonstrate WordPress, front-end, SEO and performance skills.
+Version:      1.0.0
+Requires PHP: 8.0
+Text Domain:  stomatologia-wiacek
+License:      Portfolio / educational use only
+*/
+
+/*
+This file intentionally contains only the required WordPress theme header.
+All actual styling lives in /assets/styles/ and is enqueued via inc/enqueue.php
+so the codebase stays organised and the production bundle stays minified.
+*/

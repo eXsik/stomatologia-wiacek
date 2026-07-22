@@ -1,0 +1,47 @@
+/**
+ * Typography: self-hosted font-face declarations (font-display: swap
+ * avoids invisible-text flash) + the heading/body type scale.
+ * Two families only, three weights each — kept deliberately small.
+ */
+
+@font-face {
+	font-family: 'Inter';
+	src: url('../fonts/inter-variable.woff2') format('woff2');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('../fonts/poppins-600.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+h1, h2, h3, h4 {
+	font-family: var(--font-heading);
+	font-weight: 600;
+	line-height: var(--lh-heading);
+	color: var(--color-text);
+}
+
+h1 { font-size: var(--fs-3xl); }
+h2 { font-size: var(--fs-2xl); }
+h3 { font-size: var(--fs-lg); }
+
+p {
+	max-width: 65ch;
+}
+
+.sw-section-heading {
+	font-size: var(--fs-2xl);
+	margin-bottom: var(--space-5);
+	text-align: center;
+}
+
+@media (max-width: 640px) {
+	h1 { font-size: var(--fs-xl); }
+	h2, .sw-section-heading { font-size: var(--fs-lg); }
+}

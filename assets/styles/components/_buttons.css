@@ -1,0 +1,61 @@
+/**
+ * Buttons — three styles (accent / outline / ghost), one size modifier.
+ */
+
+.sw-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-2);
+	padding: var(--space-2) var(--space-4);
+	border-radius: var(--radius-sm);
+	font-weight: 600;
+	font-size: var(--fs-sm);
+	min-height: 44px; /* tap-target size */
+	transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+	border: 1.5px solid transparent;
+}
+
+.sw-btn--accent {
+	background: var(--color-accent);
+	color: #fff;
+}
+
+.sw-btn--accent:hover {
+	background: var(--color-accent-dark);
+}
+
+.sw-btn--outline {
+	background: transparent;
+	border-color: currentColor;
+	color: #fff;
+}
+
+.sw-btn--outline:hover {
+	background: rgba(255,255,255,0.12);
+}
+
+.sw-btn--ghost {
+	background: transparent;
+	color: var(--color-primary);
+}
+
+.sw-btn--ghost:hover {
+	background: rgba(15,107,114,0.08);
+}
+
+.sw-btn--lg {
+	padding: var(--space-3) var(--space-5);
+	font-size: var(--fs-base);
+}
+
+.sw-link {
+	display: inline-block;
+	color: var(--color-primary);
+	font-weight: 500;
+	border-bottom: 1.5px solid var(--color-primary-light);
+}
+
+.sw-link:hover {
+	border-color: var(--color-primary);
+}

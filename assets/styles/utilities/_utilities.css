@@ -1,0 +1,49 @@
+/**
+ * Small utility classes. Deliberately minimal — a full utility
+ * framework isn't warranted for a single-site build like this.
+ */
+
+.sw-visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.sw-breadcrumbs ol {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	font-size: var(--fs-sm);
+	color: var(--color-text-muted);
+	margin-bottom: var(--space-4);
+}
+
+.sw-breadcrumbs li:not(:last-child)::after {
+	content: '/';
+	margin-left: var(--space-2);
+}
+
+.sw-page,
+.sw-single,
+.sw-single-service,
+.sw-archive,
+.sw-404 {
+	padding-block: var(--space-6);
+}
+
+.sw-404 {
+	text-align: center;
+}
+
+.sw-404__links {
+	display: flex;
+	justify-content: center;
+	gap: var(--space-4);
+	margin-top: var(--space-5);
+}

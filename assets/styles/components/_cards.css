@@ -1,0 +1,84 @@
+/**
+ * Cards — shared base + variant overrides for service / testimonial / post.
+ */
+
+.sw-card {
+	background: var(--color-surface);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-sm);
+	transition: transform var(--transition-base), box-shadow var(--transition-base);
+	height: 100%;
+}
+
+.sw-card:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--shadow-md);
+}
+
+.sw-card__link {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: var(--space-4);
+	gap: var(--space-2);
+}
+
+.sw-card__title {
+	font-size: var(--fs-md);
+}
+
+.sw-card__excerpt {
+	font-size: var(--fs-sm);
+	color: var(--color-text-muted);
+	flex-grow: 1;
+}
+
+.sw-card__cta {
+	font-size: var(--fs-sm);
+	font-weight: 600;
+	color: var(--color-primary);
+}
+
+.sw-card__image {
+	border-radius: var(--radius-sm);
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+}
+
+.sw-card__date {
+	font-size: var(--fs-sm);
+	color: var(--color-text-muted);
+}
+
+/* Testimonial card */
+.sw-card--testimonial {
+	padding: var(--space-4);
+}
+
+.sw-card__rating {
+	color: var(--color-accent);
+	letter-spacing: 2px;
+	margin-bottom: var(--space-2);
+}
+
+.sw-card__quote {
+	font-style: italic;
+	margin-bottom: var(--space-3);
+}
+
+.sw-card__author {
+	font-size: var(--fs-sm);
+	font-weight: 600;
+	color: var(--color-text-muted);
+}
+
+/* Icon placeholders — actual SVG sprite referenced via mask/background,
+   simplified here to a colored circle placeholder so the system is visible
+   without depending on the final icon asset. */
+.sw-icon {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: var(--color-primary-light);
+}
