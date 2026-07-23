@@ -43,33 +43,35 @@ $has_media     = ! empty( $hero_image );
 $section_class = $has_media ? 'sw-hero' : 'sw-hero sw-hero--text-only';
 ?>
 <section class="<?php echo esc_attr( $section_class ); ?>" aria-labelledby="sw-hero-heading">
-	<div class="sw-container sw-hero__layout">
-		<div class="sw-hero__content">
-			<?php if ( '' !== $eyebrow ) : ?>
-				<p class="sw-hero__eyebrow"><?php echo esc_html( $eyebrow ); ?></p>
-			<?php endif; ?>
-
-			<h1 id="sw-hero-heading" class="sw-hero__heading">
-				<?php if ( $has_split ) : ?>
-					<?php if ( '' !== $heading_before ) : ?>
-						<span class="sw-hero__heading-before"><?php echo esc_html( $heading_before ); ?></span>
-					<?php endif; ?>
-					<?php if ( '' !== $heading_emphasis ) : ?>
-						<em class="sw-hero__heading-emphasis"><?php echo esc_html( $heading_emphasis ); ?></em>
-					<?php endif; ?>
-					<?php if ( '' !== $heading_after ) : ?>
-						<span class="sw-hero__heading-after"><?php echo esc_html( $heading_after ); ?></span>
-					<?php endif; ?>
-				<?php else : ?>
-					<?php echo esc_html( $headline ); ?>
+	<div class="sw-hero__layout">
+		<div class="sw-hero__content-column">
+			<div class="sw-hero__content">
+				<?php if ( '' !== $eyebrow ) : ?>
+					<p class="sw-hero__eyebrow"><?php echo esc_html( $eyebrow ); ?></p>
 				<?php endif; ?>
-			</h1>
 
-			<p class="sw-hero__subheading"><?php echo esc_html( $subheadline ); ?></p>
+				<h1 id="sw-hero-heading" class="sw-hero__heading">
+					<?php if ( $has_split ) : ?>
+						<?php if ( '' !== $heading_before ) : ?>
+							<span class="sw-hero__heading-before"><?php echo esc_html( $heading_before ); ?></span>
+						<?php endif; ?>
+						<?php if ( '' !== $heading_emphasis ) : ?>
+							<em class="sw-hero__heading-emphasis"><?php echo esc_html( $heading_emphasis ); ?></em>
+						<?php endif; ?>
+						<?php if ( '' !== $heading_after ) : ?>
+							<span class="sw-hero__heading-after"><?php echo esc_html( $heading_after ); ?></span>
+						<?php endif; ?>
+					<?php else : ?>
+						<?php echo esc_html( $headline ); ?>
+					<?php endif; ?>
+				</h1>
 
-			<div class="sw-hero__ctas">
-				<a href="<?php echo esc_url( $cta1_link ); ?>" class="sw-btn sw-btn--accent sw-btn--lg"><?php echo esc_html( $cta1_label ); ?></a>
-				<a href="<?php echo esc_url( $cta2_link ); ?>" class="sw-btn sw-btn--outline sw-btn--lg"><?php echo esc_html( $cta2_label ); ?></a>
+				<p class="sw-hero__subheading"><?php echo esc_html( $subheadline ); ?></p>
+
+				<div class="sw-hero__ctas">
+					<a href="<?php echo esc_url( $cta1_link ); ?>" class="sw-btn sw-btn--accent"><?php echo esc_html( $cta1_label ); ?></a>
+					<a href="<?php echo esc_url( $cta2_link ); ?>" class="sw-btn sw-btn--ghost sw-hero__cta-secondary"><?php echo esc_html( $cta2_label ); ?></a>
+				</div>
 			</div>
 		</div>
 

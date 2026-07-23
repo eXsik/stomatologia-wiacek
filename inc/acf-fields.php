@@ -52,7 +52,7 @@ acf_add_local_field_group( array(
 		),
 		array(
 			'key'   => 'field_hero_heading_after',
-			'label' => 'Nagłówek — po wyróżnieniu',
+			'label' => 'Nagłówek — po wyróżnieniu (kursywa)',
 			'name'  => 'hero_heading_after',
 			'type'  => 'text',
 		),
@@ -274,6 +274,32 @@ acf_add_local_field_group( array(
 			'type'          => 'textarea',
 			'rows'          => 2,
 			'default_value' => 'Plan leczenia dopasowany do Twoich potrzeb i budżetu.',
+		),
+		array(
+			'key'           => 'field_why_us_intro',
+			'label'         => 'Krótki wstęp',
+			'name'          => 'why_us_intro',
+			'type'          => 'textarea',
+			'rows'          => 3,
+			'default_value' => 'Wierzymy, że spokojna rozmowa, precyzja i indywidualny plan leczenia budują zaufanie na lata.',
+		),
+		array(
+			'key'           => 'field_why_us_image',
+			'label'         => 'Obraz sekcji (manifest)',
+			'name'          => 'why_us_image',
+			'type'          => 'image',
+			'return_format' => 'id',
+			'preview_size'  => 'medium',
+			'instructions'  => 'Duże zdjęcie po prawej stronie sekcji „Dlaczego my”.',
+		),
+		array(
+			'key'           => 'field_services_detail_image',
+			'label'         => 'Usługi — obraz detail',
+			'name'          => 'services_detail_image',
+			'type'          => 'image',
+			'return_format' => 'id',
+			'preview_size'  => 'medium',
+			'instructions'  => 'Opcjonalny mały obraz pod nagłówkiem sekcji usług.',
 		),
 
 		// Gallery — 3 fixed before/after slots.

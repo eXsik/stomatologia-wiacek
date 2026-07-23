@@ -1,12 +1,12 @@
 /**
  * Homepage editorial hero — Scandinavian Editorial Premium.
- * Owns all .sw-hero* presentation; markup lives in template-parts/sections/hero.php.
+ * Full-width grid: container-aligned text + right-edge-bleed media on desktop.
  */
 
 .sw-hero {
 	background: var(--color-bg);
 	color: var(--color-text);
-	padding-block: var(--space-6) var(--space-5);
+	padding-block: var(--space-5);
 	overflow-x: clip;
 }
 
@@ -17,18 +17,22 @@
 	align-items: start;
 }
 
-.sw-hero__content {
-	text-align: left;
-	max-width: 40rem;
+.sw-hero__content-column {
 	min-width: 0;
+	width: min(100%, var(--container-max));
+	margin-inline: auto;
+	padding-inline: var(--container-padding);
+	box-sizing: border-box;
 }
 
-.sw-hero--text-only .sw-hero__layout {
-	grid-template-columns: 1fr;
+.sw-hero__content {
+	min-width: 0;
+	max-width: 36rem;
+	text-align: left;
 }
 
 .sw-hero--text-only .sw-hero__content {
-	max-width: 44rem;
+	max-width: 40rem;
 }
 
 .sw-hero__eyebrow {
@@ -43,35 +47,44 @@
 }
 
 .sw-hero__heading {
-	margin: 0 0 var(--space-4);
+	margin: 0 0 var(--space-3);
+	max-width: 100%;
 	font-family: var(--font-heading);
-	font-size: clamp(2.25rem, 8vw, 3rem);
-	font-weight: 600;
-	line-height: 1.12;
+	font-size: clamp(2.125rem, 7.5vw, 2.75rem);
+	font-weight: 400;
+	line-height: 1.05;
 	color: var(--color-brand-dark);
-	text-wrap: balance;
 }
 
-/* Split segments: editorial line stack when present; plain H1 text still works. */
 .sw-hero__heading-before,
 .sw-hero__heading-emphasis,
 .sw-hero__heading-after {
 	display: block;
+	max-width: 100%;
+	font-family: var(--font-heading);
+	font-weight: 400;
+	white-space: normal;
 }
 
-.sw-hero__heading-emphasis {
-	font-family: var(--font-heading);
+.sw-hero__heading-before {
+	font-style: normal;
+}
+
+.sw-hero__heading-emphasis,
+.sw-hero__heading-after {
 	font-style: italic;
-	font-weight: 500;
-	color: var(--color-brand);
+	font-weight: 400;
+	color: var(--color-brand-dark);
 }
 
 .sw-hero__subheading {
 	margin: 0 0 var(--space-5);
-	max-width: 42ch;
+	max-width: 48ch;
+	padding-left: var(--space-3);
+	border-left: 2px solid var(--color-accent);
 	font-family: var(--font-body);
-	font-size: var(--fs-md);
-	line-height: var(--lh-body);
+	font-size: var(--fs-sm);
+	line-height: 1.55;
 	color: var(--color-text-muted);
 }
 
@@ -79,7 +92,33 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: var(--space-3);
+	gap: var(--space-3) var(--space-4);
+}
+
+.sw-hero__ctas .sw-btn--accent {
+	padding: 0.5625rem 1rem;
+	min-height: 2.75rem;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+}
+
+.sw-hero__cta-secondary {
+	padding: 0.5rem 0;
+	min-height: 2.75rem;
+	border: none;
+	border-radius: 0;
+	border-bottom: 1px solid var(--color-brand);
+	font-weight: 500;
+	font-size: 0.8125rem;
+	color: var(--color-brand-dark);
+	background: transparent;
+}
+
+.sw-hero__cta-secondary:hover {
+	background: transparent;
+	color: var(--color-brand);
+	border-bottom-color: var(--color-brand);
 }
 
 .sw-hero__media {
@@ -88,7 +127,7 @@
 	width: 100%;
 	aspect-ratio: 5 / 4;
 	overflow: hidden;
-	border-radius: var(--radius-md); /* 8px max */
+	border-radius: var(--radius-sm);
 	box-shadow: none;
 }
 
@@ -97,83 +136,112 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	object-position: center;
+	object-position: 42% 40%;
 }
 
-/* Tablet — keep stack, reduce type/spacing without crushing */
 @media (min-width: 640px) {
 	.sw-hero {
-		padding-block: var(--space-7) var(--space-6);
+		padding-block: var(--space-5) var(--space-6);
 	}
 
 	.sw-hero__heading {
-		font-size: clamp(2.5rem, 5.5vw, 3.75rem);
+		font-size: clamp(2.375rem, 4.5vw, 3rem);
+		line-height: 1.02;
 	}
 
-	.sw-hero__layout {
-		gap: var(--space-6);
+	.sw-hero__subheading {
+		font-size: 0.9375rem;
 	}
 }
 
-/* Desktop — asymmetrical text ~44% / image ~56% */
+/* Desktop: left text ~42%, right image ≥56%, flush to viewport edge */
 @media (min-width: 900px) {
 	.sw-hero {
-		padding-block: var(--space-7) var(--space-6);
+		padding-block: 0;
 	}
 
 	.sw-hero__layout {
 		grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
-		gap: clamp(var(--space-5), 4vw, var(--space-7));
-		align-items: center;
+		gap: 0;
+		align-items: stretch;
+		min-height: min(30rem, 64vh);
 	}
 
 	.sw-hero--text-only .sw-hero__layout {
 		grid-template-columns: 1fr;
+		min-height: 0;
+	}
+
+	.sw-hero__content-column {
+		width: auto;
+		max-width: none;
+		margin-inline: 0;
+		display: flex;
+		align-items: flex-start;
+		padding-block: var(--space-6);
+		padding-right: clamp(var(--space-4), 2vw, var(--space-5));
+		padding-left: max(
+			var(--container-padding),
+			calc((100vw - var(--container-wide)) / 2 + var(--container-padding))
+		);
+	}
+
+	.sw-hero--text-only .sw-hero__content-column {
+		width: min(100%, var(--container-wide));
+		margin-inline: auto;
+		padding-inline: var(--container-padding);
+		padding-block: var(--space-7);
 	}
 
 	.sw-hero__content {
-		max-width: none;
-		padding-block: var(--space-4);
+		width: 100%;
+		max-width: 100%;
 	}
 
 	.sw-hero--text-only .sw-hero__content {
-		max-width: 44rem;
+		max-width: 40rem;
 	}
 
 	.sw-hero__heading {
-		font-size: clamp(3rem, 4.2vw, 5rem);
-		margin-bottom: var(--space-5);
-	}
-
-	.sw-hero__heading-before,
-	.sw-hero__heading-emphasis,
-	.sw-hero__heading-after {
-		display: block;
+		font-size: clamp(2.5rem, 2.8vw, 3.5rem);
+		line-height: 1.02;
+		margin-bottom: var(--space-4);
 	}
 
 	.sw-hero__subheading {
-		font-size: var(--fs-md);
-		margin-bottom: var(--space-6);
+		margin-bottom: var(--space-5);
+		font-size: 0.875rem;
 	}
 
 	.sw-hero__media {
-		aspect-ratio: 5 / 4;
-		max-height: min(36rem, 68vh);
-		justify-self: stretch;
+		aspect-ratio: auto;
+		height: 100%;
+		min-height: 100%;
+		border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+		align-self: stretch;
+	}
+
+	.sw-hero__image {
+		position: absolute;
+		inset: 0;
+		object-position: 40% 40%;
 	}
 }
 
-@media (min-width: 1200px) {
-	.sw-hero {
-		padding-block: var(--space-8) var(--space-7);
+@media (min-width: 1280px) {
+	.sw-hero__layout {
+		min-height: min(32rem, 66vh);
+	}
+
+	.sw-hero__content-column {
+		padding-block: var(--space-6);
 	}
 
 	.sw-hero__heading {
-		font-size: clamp(3.5rem, 4vw, 5.5rem);
+		font-size: clamp(2.625rem, 2.5vw, 3.5rem);
 	}
 }
 
-/* Narrow phones — CTAs may stack full-width; avoid overflow */
 @media (max-width: 480px) {
 	.sw-hero__ctas {
 		flex-direction: column;
@@ -182,9 +250,14 @@
 
 	.sw-hero__ctas .sw-btn {
 		width: 100%;
+		justify-content: center;
+	}
+
+	.sw-hero__cta-secondary {
+		width: fit-content;
 	}
 
 	.sw-hero__heading {
-		font-size: clamp(2rem, 9vw, 2.5rem);
+		font-size: clamp(1.875rem, 8.5vw, 2.375rem);
 	}
 }

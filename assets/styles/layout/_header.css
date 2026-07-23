@@ -42,43 +42,54 @@ body.admin-bar .sw-header {
 	align-items: center;
 	justify-content: space-between;
 	gap: var(--space-4);
-	min-height: 5.25rem; /* ~84px desktop target */
-	padding-block: 1.25rem;
+	max-width: var(--container-wide);
+	min-height: 4.25rem; /* ~68px */
+	padding-block: 0.75rem;
 	transition: min-height var(--transition-base), padding var(--transition-base);
 }
 
 .sw-header.is-scrolled .sw-header__inner {
-	min-height: 4.5rem;
-	padding-block: var(--space-3);
+	min-height: 3.75rem;
+	padding-block: 0.5rem;
 }
 
 .sw-header__logo {
-	font-family: var(--font-heading);
-	font-weight: 600;
-	font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
-	line-height: 1.2;
-	color: var(--color-brand-dark);
 	flex-shrink: 0;
-	max-width: min(14rem, 42vw);
 }
 
-.sw-header__logo a {
-	display: inline-flex;
-	align-items: center;
-	color: inherit;
+/* Two-line text wordmark — matches approved mockup */
+.sw-logo {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.12em;
+	color: var(--color-brand-dark);
 	text-decoration: none;
+	line-height: 1;
 }
 
-.sw-header__logo img {
-	display: block;
-	width: auto;
-	height: auto;
-	max-height: clamp(2rem, 4.5vw, 2.75rem);
-	transition: max-height var(--transition-base);
+.sw-logo:hover,
+.sw-logo:focus-visible {
+	color: var(--color-brand);
 }
 
-.sw-header.is-scrolled .sw-header__logo img {
-	max-height: clamp(1.75rem, 4vw, 2.25rem);
+.sw-logo__name {
+	font-family: var(--font-heading);
+	font-size: clamp(1.125rem, 1.35vw, 1.375rem);
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	line-height: 1;
+	color: inherit;
+}
+
+.sw-logo__descriptor {
+	font-family: var(--font-body);
+	font-size: 0.5rem; /* 8px */
+	font-weight: 500;
+	letter-spacing: 0.2em;
+	line-height: 1;
+	text-transform: uppercase;
+	color: var(--color-brand);
 }
 
 .sw-nav {
@@ -91,16 +102,18 @@ body.admin-bar .sw-header {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: var(--space-2) var(--space-5);
+	gap: 0.2rem 1.125rem;
 }
 
 .sw-nav-link {
 	font-family: var(--font-body);
 	font-weight: 500;
-	font-size: var(--fs-sm);
+	font-size: 0.6875rem; /* 11px */
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
 	color: var(--color-brand);
-	padding-block: var(--space-2);
-	border-bottom: 2px solid transparent;
+	padding-block: 0.3125rem;
+	border-bottom: 1px solid transparent;
 	transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 
@@ -120,14 +133,23 @@ body.admin-bar .sw-header {
 .sw-header__phone {
 	display: none;
 	font-family: var(--font-body);
-	font-weight: 600;
-	font-size: var(--fs-sm);
+	font-weight: 500;
+	font-size: 0.75rem;
 	color: var(--color-brand-dark);
 	white-space: nowrap;
 }
 
 .sw-header__phone:hover {
 	color: var(--color-brand);
+}
+
+.sw-header__cta {
+	padding: 0.4375rem 0.75rem;
+	min-height: 2.5rem; /* accessible touch target */
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
 }
 
 .sw-nav-toggle {

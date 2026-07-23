@@ -5,6 +5,8 @@
 **Source of truth:** `docs/homepage-design-spec.md`, `docs/current-theme-audit.md`, `docs/content-model.md`  
 **Constraint:** ACF Free only; no font binaries; no dependency install without approval
 
+> **Status update:** This document is intentionally limited to Phase 1. It is not sufficient to reach the final generated homepage concept. For the remaining work, use `docs/final-homepage-implementation-plan.md` as the active implementation plan.
+
 This plan covers Phase 1 implementation only. It does not contain implementation code.
 
 ---

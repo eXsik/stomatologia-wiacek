@@ -1,11 +1,7 @@
 <?php
 /**
- * FAQ accordion section.
- * Data: WP_Query on the `faq` CPT. Uses native <details>/<summary> so
- * the expand/collapse behaviour works with zero JavaScript; a small
- * enhancement script only adds smoother open/close animation.
- * FAQPage JSON-LD is generated from the exact same query results,
- * so visible content and schema can never drift apart.
+ * FAQ accordion section — editorial split on homepage.
+ * Data: WP_Query on the `faq` CPT. Uses native <details>/<summary>.
  *
  * @package StomatologiaWiacek
  */
@@ -23,8 +19,13 @@ $faqs = new WP_Query( array(
 ) );
 ?>
 <section class="sw-faq" aria-labelledby="sw-faq-heading">
-	<div class="sw-container sw-faq__inner">
-		<h2 id="sw-faq-heading" class="sw-section-heading"><?php esc_html_e( 'Najczęściej zadawane pytania', 'stomatologia-wiacek' ); ?></h2>
+	<div class="sw-container sw-faq__layout">
+		<div class="sw-faq__intro">
+			<p class="sw-faq__eyebrow"><?php esc_html_e( 'FAQ', 'stomatologia-wiacek' ); ?></p>
+			<h2 id="sw-faq-heading" class="sw-faq__heading">
+				<?php esc_html_e( 'Najczęściej zadawane pytania.', 'stomatologia-wiacek' ); ?>
+			</h2>
+		</div>
 
 		<?php if ( $faqs->have_posts() ) : ?>
 			<div class="sw-faq__list">

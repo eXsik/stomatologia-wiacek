@@ -1,0 +1,124 @@
+/**
+ * Homepage contact CTA band — light conversion strip before footer.
+ * Markup: template-parts/sections/contact.php
+ */
+
+.sw-contact-cta {
+	background: var(--color-bg-alt);
+	color: var(--color-text);
+	padding-block: var(--space-6);
+	border-block: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+}
+
+.sw-contact-cta__inner {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-5);
+	align-items: start;
+}
+
+.sw-contact-cta__heading {
+	margin: 0 0 var(--space-3);
+	font-family: var(--font-heading);
+	font-size: clamp(2rem, 3.5vw, 3rem);
+	font-weight: 400;
+	line-height: 1.15;
+	color: var(--color-brand-dark);
+	text-align: left;
+}
+
+.sw-contact-cta__text {
+	margin: 0;
+	max-width: 40ch;
+	font-family: var(--font-body);
+	font-size: var(--fs-sm);
+	line-height: 1.55;
+	color: var(--color-text-muted);
+}
+
+.sw-contact-cta__meta {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-4);
+}
+
+.sw-contact-cta__block {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	min-width: 0;
+}
+
+.sw-contact-cta__label {
+	font-family: var(--font-body);
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--color-text-muted);
+}
+
+.sw-contact-cta__value {
+	font-family: var(--font-body);
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1.4;
+	color: var(--color-brand-dark);
+	text-decoration: none;
+}
+
+a.sw-contact-cta__value:hover,
+a.sw-contact-cta__value:focus-visible {
+	color: var(--color-brand);
+}
+
+.sw-contact-cta__action {
+	display: flex;
+	align-items: center;
+}
+
+.sw-contact-cta__btn {
+	min-height: 2.75rem;
+	padding-inline: 1.25rem;
+	font-size: 0.8125rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+@media (min-width: 640px) {
+	.sw-contact-cta__meta {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0;
+	}
+
+	.sw-contact-cta__block {
+		padding-inline: var(--space-4);
+		border-right: 1px solid color-mix(in srgb, var(--color-border) 65%, transparent);
+	}
+
+	.sw-contact-cta__block:first-child {
+		padding-left: 0;
+	}
+
+	.sw-contact-cta__block:last-child {
+		border-right: none;
+		padding-right: 0;
+	}
+}
+
+@media (min-width: 900px) {
+	.sw-contact-cta {
+		padding-block: var(--space-7);
+	}
+
+	.sw-contact-cta__inner {
+		grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.6fr) auto;
+		gap: var(--space-6);
+		align-items: center;
+	}
+
+	.sw-contact-cta__heading {
+		font-size: clamp(2.25rem, 2.5vw, 3.25rem);
+		margin-bottom: var(--space-2);
+	}
+}
