@@ -39,8 +39,6 @@ output `main.min.css` / `main.min.js`, referenced automatically by `inc/enqueue.
 `WP_DEBUG` is `false`. Example `package.json` scripts are included as a starting point.
 
 ## Consciously scoped out (documented, not implemented)
-Given the 1–2 day portfolio timeframe, the following were deliberately left as noted
-recommendations rather than built:
 - **Live Google Reviews API sync** — testimonials are currently CPT-managed/manual; a production
   build would pull live reviews via the Google Business Profile API on a cron schedule.
 - **Online booking widget** (e.g. Booksy embed) — the contact form + tap-to-call cover the MVP
