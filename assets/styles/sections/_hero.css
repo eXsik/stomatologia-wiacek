@@ -1,0 +1,190 @@
+/**
+ * Homepage editorial hero — Scandinavian Editorial Premium.
+ * Owns all .sw-hero* presentation; markup lives in template-parts/sections/hero.php.
+ */
+
+.sw-hero {
+	background: var(--color-bg);
+	color: var(--color-text);
+	padding-block: var(--space-6) var(--space-5);
+	overflow-x: clip;
+}
+
+.sw-hero__layout {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-5);
+	align-items: start;
+}
+
+.sw-hero__content {
+	text-align: left;
+	max-width: 40rem;
+	min-width: 0;
+}
+
+.sw-hero--text-only .sw-hero__layout {
+	grid-template-columns: 1fr;
+}
+
+.sw-hero--text-only .sw-hero__content {
+	max-width: 44rem;
+}
+
+.sw-hero__eyebrow {
+	margin: 0 0 var(--space-3);
+	font-family: var(--font-body);
+	font-size: 0.8125rem;
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	line-height: 1.4;
+	text-transform: uppercase;
+	color: var(--color-text-muted);
+}
+
+.sw-hero__heading {
+	margin: 0 0 var(--space-4);
+	font-family: var(--font-heading);
+	font-size: clamp(2.25rem, 8vw, 3rem);
+	font-weight: 600;
+	line-height: 1.12;
+	color: var(--color-brand-dark);
+	text-wrap: balance;
+}
+
+/* Split segments: editorial line stack when present; plain H1 text still works. */
+.sw-hero__heading-before,
+.sw-hero__heading-emphasis,
+.sw-hero__heading-after {
+	display: block;
+}
+
+.sw-hero__heading-emphasis {
+	font-family: var(--font-heading);
+	font-style: italic;
+	font-weight: 500;
+	color: var(--color-brand);
+}
+
+.sw-hero__subheading {
+	margin: 0 0 var(--space-5);
+	max-width: 42ch;
+	font-family: var(--font-body);
+	font-size: var(--fs-md);
+	line-height: var(--lh-body);
+	color: var(--color-text-muted);
+}
+
+.sw-hero__ctas {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-3);
+}
+
+.sw-hero__media {
+	position: relative;
+	min-width: 0;
+	width: 100%;
+	aspect-ratio: 5 / 4;
+	overflow: hidden;
+	border-radius: var(--radius-md); /* 8px max */
+	box-shadow: none;
+}
+
+.sw-hero__image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+/* Tablet — keep stack, reduce type/spacing without crushing */
+@media (min-width: 640px) {
+	.sw-hero {
+		padding-block: var(--space-7) var(--space-6);
+	}
+
+	.sw-hero__heading {
+		font-size: clamp(2.5rem, 5.5vw, 3.75rem);
+	}
+
+	.sw-hero__layout {
+		gap: var(--space-6);
+	}
+}
+
+/* Desktop — asymmetrical text ~44% / image ~56% */
+@media (min-width: 900px) {
+	.sw-hero {
+		padding-block: var(--space-7) var(--space-6);
+	}
+
+	.sw-hero__layout {
+		grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
+		gap: clamp(var(--space-5), 4vw, var(--space-7));
+		align-items: center;
+	}
+
+	.sw-hero--text-only .sw-hero__layout {
+		grid-template-columns: 1fr;
+	}
+
+	.sw-hero__content {
+		max-width: none;
+		padding-block: var(--space-4);
+	}
+
+	.sw-hero--text-only .sw-hero__content {
+		max-width: 44rem;
+	}
+
+	.sw-hero__heading {
+		font-size: clamp(3rem, 4.2vw, 5rem);
+		margin-bottom: var(--space-5);
+	}
+
+	.sw-hero__heading-before,
+	.sw-hero__heading-emphasis,
+	.sw-hero__heading-after {
+		display: block;
+	}
+
+	.sw-hero__subheading {
+		font-size: var(--fs-md);
+		margin-bottom: var(--space-6);
+	}
+
+	.sw-hero__media {
+		aspect-ratio: 5 / 4;
+		max-height: min(36rem, 68vh);
+		justify-self: stretch;
+	}
+}
+
+@media (min-width: 1200px) {
+	.sw-hero {
+		padding-block: var(--space-8) var(--space-7);
+	}
+
+	.sw-hero__heading {
+		font-size: clamp(3.5rem, 4vw, 5.5rem);
+	}
+}
+
+/* Narrow phones — CTAs may stack full-width; avoid overflow */
+@media (max-width: 480px) {
+	.sw-hero__ctas {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.sw-hero__ctas .sw-btn {
+		width: 100%;
+	}
+
+	.sw-hero__heading {
+		font-size: clamp(2rem, 9vw, 2.5rem);
+	}
+}
