@@ -2,9 +2,8 @@
 /**
  * Template Name: Kontakt
  *
- * Custom page template assigned to the Kontakt page — reuses the same
- * contact section as the homepage so the map/form/NAP markup and its
- * JSON-LD only exist in one place.
+ * Custom page template for the Kontakt page — full map/form section.
+ * Homepage uses the compact contact CTA band instead.
  *
  * @package StomatologiaWiacek
  */
@@ -21,6 +20,6 @@ get_header();
 		<?php endwhile; ?>
 	</div>
 
-	<?php get_template_part( 'template-parts/sections/contact' ); ?>
+	<?php get_template_part( 'template-parts/sections/contact-full' ); ?>
 </main>
 <?php get_footer(); ?>

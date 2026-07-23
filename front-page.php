@@ -15,13 +15,11 @@ get_header();
 	get_template_part( 'template-parts/sections/hero' );
 	get_template_part( 'template-parts/sections/trust-bar' );
 	get_template_part( 'template-parts/sections/services-grid' );
-	// why-us.php renders the paired "Dlaczego my" + "Poznaj lekarza" two-column
-	// band shown in the wireframe, pulling in sections/doctor.php internally.
 	get_template_part( 'template-parts/sections/why-us' );
+	get_template_part( 'template-parts/sections/doctor' );
 	get_template_part( 'template-parts/sections/gallery-teaser' );
 	get_template_part( 'template-parts/sections/testimonials' );
 	get_template_part( 'template-parts/sections/faq' );
-	get_template_part( 'template-parts/sections/blog-teaser' );
 	get_template_part( 'template-parts/sections/contact' );
 	?>
 </main>

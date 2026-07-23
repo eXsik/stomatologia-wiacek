@@ -1,0 +1,110 @@
+/**
+ * Homepage trust strip — typography-led four-slot row.
+ * Owns all .sw-trust-bar* presentation; markup in template-parts/sections/trust-bar.php.
+ */
+
+.sw-trust-bar {
+	background: var(--color-bg);
+	color: var(--color-text);
+	padding-block: 0;
+	border-block: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+}
+
+.sw-trust-bar__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0;
+	width: min(100%, var(--container-wide));
+	margin-inline: auto;
+}
+
+.sw-trust-bar__item {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 0.35rem;
+	padding-block: 1rem;
+	padding-inline: var(--space-3);
+	border: none;
+}
+
+/* Short centered vertical separators */
+.sw-trust-bar__item:nth-child(odd)::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 1px;
+	height: 2.25rem;
+	background: color-mix(in srgb, var(--color-border) 60%, transparent);
+}
+
+.sw-trust-bar__value {
+	font-family: var(--font-heading);
+	font-size: clamp(1.25rem, 3vw, 1.625rem);
+	font-weight: 400;
+	font-style: normal;
+	line-height: 1.1;
+	color: var(--color-brand-dark);
+}
+
+.sw-trust-bar__label {
+	font-family: var(--font-body);
+	font-size: 0.75rem;
+	font-weight: 400;
+	line-height: 1.35;
+	color: var(--color-text-muted);
+	max-width: 16ch;
+}
+
+@media (min-width: 640px) {
+	.sw-trust-bar__item {
+		padding-block: 1.125rem;
+		padding-inline: var(--space-4);
+	}
+
+	.sw-trust-bar__label {
+		max-width: 20ch;
+	}
+}
+
+@media (min-width: 900px) {
+	.sw-trust-bar__grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.sw-trust-bar__item {
+		min-height: 6.5rem;
+		padding-block: 1.375rem;
+		padding-inline: var(--space-4);
+		gap: 0.45rem;
+	}
+
+	.sw-trust-bar__item:nth-child(odd)::after {
+		content: none;
+	}
+
+	.sw-trust-bar__item:not(:last-child)::after {
+		content: "";
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 1px;
+		height: 2.75rem;
+		background: color-mix(in srgb, var(--color-border) 55%, transparent);
+	}
+
+	.sw-trust-bar__value {
+		font-size: clamp(1.625rem, 1.8vw, 2rem);
+	}
+
+	.sw-trust-bar__label {
+		max-width: none;
+		font-size: 0.75rem;
+	}
+}

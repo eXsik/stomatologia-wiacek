@@ -4,15 +4,10 @@
 
 .sw-card {
 	background: var(--color-surface);
+	border: 1px solid var(--color-border);
 	border-radius: var(--radius-md);
-	box-shadow: var(--shadow-sm);
-	transition: transform var(--transition-base), box-shadow var(--transition-base);
+	box-shadow: none;
 	height: 100%;
-}
-
-.sw-card:hover {
-	transform: translateY(-4px);
-	box-shadow: var(--shadow-md);
 }
 
 .sw-card__link {

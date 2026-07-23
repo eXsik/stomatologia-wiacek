@@ -1,6 +1,6 @@
 <?php
 /**
- * Testimonials / patient reviews section.
+ * Testimonials — open editorial quotes (homepage).
  * Data: WP_Query on the `testimonial` CPT.
  *
  * @package StomatologiaWiacek
@@ -19,13 +19,40 @@ $testimonials = new WP_Query( array(
 ) );
 ?>
 <section class="sw-testimonials" aria-labelledby="sw-testimonials-heading">
-	<div class="sw-container">
-		<h2 id="sw-testimonials-heading" class="sw-section-heading"><?php esc_html_e( 'Opinie pacjentów', 'stomatologia-wiacek' ); ?></h2>
+	<div class="sw-container sw-testimonials__layout">
+		<div class="sw-testimonials__intro">
+			<p class="sw-testimonials__eyebrow"><?php esc_html_e( 'Opinie', 'stomatologia-wiacek' ); ?></p>
+			<h2 id="sw-testimonials-heading" class="sw-testimonials__heading">
+				<?php esc_html_e( 'Zaufanie naszych pacjentów.', 'stomatologia-wiacek' ); ?>
+			</h2>
+		</div>
 
 		<?php if ( $testimonials->have_posts() ) : ?>
-			<div class="sw-testimonials__grid">
-				<?php while ( $testimonials->have_posts() ) : $testimonials->the_post(); ?>
-					<?php get_template_part( 'template-parts/components/card-testimonial' ); ?>
+			<div class="sw-testimonials__quotes">
+				<?php
+				while ( $testimonials->have_posts() ) :
+					$testimonials->the_post();
+					$quote = '';
+					if ( function_exists( 'get_field' ) ) {
+						$quote = trim( (string) ( get_field( 'quote' ) ?: '' ) );
+					}
+					if ( '' === $quote ) {
+						$quote = wp_trim_words( wp_strip_all_tags( get_the_content() ), 28 );
+					}
+					$treatment = function_exists( 'get_field' ) ? trim( (string) ( get_field( 'treatment' ) ?: '' ) ) : '';
+					?>
+					<figure class="sw-testimonials__item">
+						<span class="sw-testimonials__mark" aria-hidden="true">&ldquo;</span>
+						<blockquote class="sw-testimonials__quote">
+							<p><?php echo esc_html( $quote ); ?></p>
+						</blockquote>
+						<figcaption class="sw-testimonials__author">
+							<span class="sw-testimonials__name"><?php the_title(); ?></span>
+							<?php if ( '' !== $treatment ) : ?>
+								<span class="sw-testimonials__treatment"><?php echo esc_html( $treatment ); ?></span>
+							<?php endif; ?>
+						</figcaption>
+					</figure>
 				<?php endwhile; ?>
 			</div>
 		<?php endif; ?>

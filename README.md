@@ -6,7 +6,7 @@ built for the real Stomatologia Wiącek practice.** All content is placeholder/d
 noted otherwise.
 
 ## What this demonstrates
-- WordPress theme development: custom post types, ACF Pro field architecture, template hierarchy
+- WordPress theme development: custom post types, ACF Free field architecture, template hierarchy
 - Front-end engineering: hand-authored CSS design system, vanilla JS (no framework/jQuery), accessibility
 - SEO implementation: JSON-LD structured data, meta/OG tags, semantic markup, breadcrumbs
 - Performance-conscious decisions: conditional asset loading, lazy images, deferred/module scripts, font optimization
@@ -17,12 +17,12 @@ strategy → wireframe → architecture process behind this build.
 ## Requirements
 - WordPress 6.4+
 - PHP 8.0+
-- ACF Pro (for Options Page + repeater/relationship fields — the theme fails gracefully without it, but content editing loses its structured fields)
+- Advanced Custom Fields (Free) — optional but recommended for structured homepage / CPT fields. The theme fails gracefully without it; homepage sections fall back to demo copy where defined.
 
 ## Setup
 1. Copy this theme folder into `wp-content/themes/`.
 2. Activate **Stomatologia Wiacek – Redesign Concept** in Appearance → Themes.
-3. Install & activate **Advanced Custom Fields PRO**.
+3. Install & activate **Advanced Custom Fields** (Free is enough — no Pro required).
 4. Go to **Dane gabinetu** (custom admin menu) and fill in NAP, hours, socials, map coordinates — this single source of truth feeds the header, footer, contact section, and JSON-LD schema.
 5. Add content under **Usługi** (Services), **Zespół** (Team), **Opinie** (Testimonials), **FAQ**.
 6. Set a static homepage (Settings → Reading → a page using `front-page.php` is automatic since it's a template file, not a page template — no extra step needed).
@@ -30,10 +30,7 @@ strategy → wireframe → architecture process behind this build.
 8. Set **Settings → Reading → Posts page** if you want `/aktualnosci/` as a proper blog archive URL.
 
 ## ACF field sync
-Field groups are registered in `inc/acf-fields.php` for code-reviewability. In a live project,
-export them to `/acf-json/` (ACF Pro does this automatically on save) and commit that folder —
-it becomes the source of truth over the database copy, which is the standard professional
-ACF workflow for version-controlled builds.
+Field groups are registered in `inc/acf-fields.php` for code-reviewability and use only ACF Free field types (no Repeater, Relationship, or Options Page). Multi-row homepage slots (trust bar, why-us, gallery) are fixed-count fields assembled by helpers.
 
 ## Build step (production)
 `assets/styles/main.css` and `assets/scripts/main.js` are authored as separate partials/modules

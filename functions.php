@@ -21,11 +21,12 @@ $sw_modules = array(
 	'inc/setup.php',           // theme_support, menus, image sizes.
 	'inc/enqueue.php',         // CSS / JS registration.
 	'inc/helpers.php',         // shared utility functions.
+	'inc/clinic-settings.php', // Dane gabinetu settings (ACF Free — no Options Page).
 	'inc/cpt-services.php',    // Services custom post type.
 	'inc/cpt-team.php',        // Team Members custom post type.
 	'inc/cpt-testimonials.php',// Testimonials custom post type.
 	'inc/cpt-faq.php',         // FAQ custom post type.
-	'inc/acf-fields.php',      // ACF field group registration.
+	'inc/acf-fields.php',      // ACF Free field group registration.
 	'inc/nav-walker.php',      // accessible custom nav walker.
 	'inc/seo-meta.php',        // title / meta description / Open Graph.
 	'inc/seo-schema.php',      // JSON-LD: Dentist, LocalBusiness, FAQPage, Breadcrumb.

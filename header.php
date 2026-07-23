@@ -26,13 +26,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="sw-container sw-header__inner">
 
 		<div class="sw-header__logo">
-			<?php if ( has_custom_logo() ) : ?>
-				<?php the_custom_logo(); ?>
-			<?php else : ?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<span><?php bloginfo( 'name' ); ?></span>
-				</a>
-			<?php endif; ?>
+			<a class="sw-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<span class="sw-visually-hidden"><?php bloginfo( 'name' ); ?></span>
+				<span class="sw-logo__name" aria-hidden="true"><?php echo esc_html( 'WIĄCEK' ); ?></span>
+				<span class="sw-logo__descriptor" aria-hidden="true"><?php echo esc_html( 'STOMATOLOGIA' ); ?></span>
+			</a>
 		</div>
 
 		<nav class="sw-nav" aria-label="<?php esc_attr_e( 'Menu główne', 'stomatologia-wiacek' ); ?>">
@@ -52,7 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="sw-visually-hidden"><?php esc_html_e( 'Zadzwoń: ', 'stomatologia-wiacek' ); ?></span>
 				<?php echo esc_html( sw_get_option( 'clinic_phone', '62 123 45 67' ) ); ?>
 			</a>
-			<a href="#kontakt" class="sw-btn sw-btn--accent"><?php esc_html_e( 'Umów wizytę', 'stomatologia-wiacek' ); ?></a>
+			<a href="<?php echo esc_url( sw_get_option( 'booking_url', '#kontakt' ) ); ?>" class="sw-btn sw-btn--accent sw-header__cta"><?php esc_html_e( 'Umów wizytę', 'stomatologia-wiacek' ); ?></a>
 
 			<button type="button" class="sw-nav-toggle" aria-expanded="false" aria-controls="sw-mobile-menu" data-sw-mobile-menu-toggle>
 				<span class="sw-visually-hidden"><?php esc_html_e( 'Otwórz menu', 'stomatologia-wiacek' ); ?></span>

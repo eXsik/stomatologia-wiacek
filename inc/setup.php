@@ -44,25 +44,6 @@ function sw_setup() {
 add_action( 'after_setup_theme', 'sw_setup' );
 
 /**
- * Register ACF Options Page for global/site-wide data:
- * address, phone, hours, socials, map coordinates.
- * This is the single source of truth reused in header, footer,
- * contact section and JSON-LD schema output — avoids NAP duplication.
- */
-function sw_register_options_page() {
-	if ( function_exists( 'acf_add_options_page' ) ) {
-		acf_add_options_page( array(
-			'page_title' => 'Dane gabinetu',
-			'menu_title' => 'Dane gabinetu',
-			'menu_slug'  => 'sw-options',
-			'capability' => 'manage_options',
-			'icon_url'   => 'dashicons-admin-generic',
-		) );
-	}
-}
-add_action( 'acf/init', 'sw_register_options_page' );
-
-/**
  * Disable the WordPress core emoji script/style — not needed, saves
  * a render-blocking request and inline CSS on every page load.
  */

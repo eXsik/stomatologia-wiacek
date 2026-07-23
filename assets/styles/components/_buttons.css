@@ -1,5 +1,6 @@
 /**
  * Buttons — three styles (accent / outline / ghost), one size modifier.
+ * Outline defaults to teal on light surfaces.
  */
 
 .sw-btn {
@@ -7,18 +8,19 @@
 	align-items: center;
 	justify-content: center;
 	gap: var(--space-2);
-	padding: var(--space-2) var(--space-4);
+	padding: 0.5rem 1rem;
 	border-radius: var(--radius-sm);
+	font-family: var(--font-body);
 	font-weight: 600;
-	font-size: var(--fs-sm);
-	min-height: 44px; /* tap-target size */
-	transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+	font-size: 0.8125rem;
+	min-height: 2.75rem; /* accessible tap target, compact Phase 1 CTA */
+	transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
 	border: 1.5px solid transparent;
 }
 
 .sw-btn--accent {
 	background: var(--color-accent);
-	color: #fff;
+	color: var(--color-on-primary);
 }
 
 .sw-btn--accent:hover {
@@ -27,12 +29,12 @@
 
 .sw-btn--outline {
 	background: transparent;
-	border-color: currentColor;
-	color: #fff;
+	border-color: var(--color-primary);
+	color: var(--color-primary);
 }
 
 .sw-btn--outline:hover {
-	background: rgba(255,255,255,0.12);
+	background: var(--color-primary-light);
 }
 
 .sw-btn--ghost {
@@ -41,7 +43,7 @@
 }
 
 .sw-btn--ghost:hover {
-	background: rgba(15,107,114,0.08);
+	background: var(--color-bg);
 }
 
 .sw-btn--lg {

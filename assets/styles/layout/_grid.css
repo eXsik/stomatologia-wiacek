@@ -1,6 +1,7 @@
 /**
  * Container, section spacing, and shared grid rules.
  * Mobile-first: base = single column, min-width layers up.
+ * Hero / trust bar own their padding in sections/_hero.css and sections/_trust-bar.css.
  */
 
 .sw-container {
@@ -9,8 +10,6 @@
 	padding-inline: var(--container-padding);
 }
 
-.sw-hero,
-.sw-trust-bar,
 .sw-services,
 .sw-why-us,
 .sw-gallery-teaser,
@@ -18,37 +17,7 @@
 .sw-faq,
 .sw-blog-teaser,
 .sw-contact {
-	padding-block: var(--space-7);
-}
-
-.sw-trust-bar {
-	background: var(--color-primary);
-	color: #fff;
-}
-
-.sw-trust-bar__grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: var(--space-4);
-}
-
-.sw-trust-bar__item {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	gap: var(--space-1);
-}
-
-.sw-trust-bar__value {
-	font-family: var(--font-heading);
-	font-size: var(--fs-lg);
-	font-weight: 600;
-}
-
-.sw-trust-bar__label {
-	font-size: var(--fs-sm);
-	opacity: 0.9;
+	padding-block: var(--space-section);
 }
 
 .sw-services__grid,
@@ -115,7 +84,6 @@
 }
 
 @media (min-width: 640px) {
-	.sw-trust-bar__grid { grid-template-columns: repeat(4, 1fr); }
 	.sw-services__grid { grid-template-columns: repeat(2, 1fr); }
 	.sw-blog-teaser__grid,
 	.sw-testimonials__grid { grid-template-columns: repeat(2, 1fr); }

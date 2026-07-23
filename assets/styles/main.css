@@ -5,50 +5,23 @@
  * ships to the browser instead of a dozen @import chains.
  */
 
+@import 'base/_variables.css';
 @import 'base/_reset.css';
 @import 'base/_typography.css';
 @import 'layout/_grid.css';
 @import 'layout/_header.css';
 @import 'layout/_footer.css';
+@import 'sections/_hero.css';
+@import 'sections/_trust-bar.css';
+@import 'sections/_services-editorial.css';
+@import 'sections/_manifest.css';
+@import 'sections/_doctor-feature.css';
+@import 'sections/_gallery-editorial.css';
+@import 'sections/_testimonials-editorial.css';
 @import 'components/_buttons.css';
 @import 'components/_cards.css';
 @import 'components/_accordion.css';
+@import 'sections/_faq-editorial.css';
+@import 'sections/_contact-cta.css';
 @import 'components/_forms.css';
 @import 'utilities/_utilities.css';
-
-/* Doctor teaser + why-us pairing (component-specific, small enough
-   not to warrant its own file per the ITCSS layering) */
-.sw-doctor-teaser__card {
-	display: flex;
-	gap: var(--space-3);
-	align-items: flex-start;
-	background: var(--color-surface);
-	padding: var(--space-4);
-	border-radius: var(--radius-md);
-	box-shadow: var(--shadow-sm);
-}
-
-.sw-doctor-teaser__photo {
-	border-radius: 50%;
-	width: 72px;
-	height: 72px;
-	object-fit: cover;
-	flex-shrink: 0;
-}
-
-.sw-doctor-teaser__name {
-	font-weight: 600;
-	font-family: var(--font-heading);
-}
-
-.sw-doctor-teaser__role {
-	font-size: var(--fs-sm);
-	color: var(--color-primary);
-	margin-bottom: var(--space-2);
-}
-
-.sw-doctor-teaser__bio {
-	font-size: var(--fs-sm);
-	color: var(--color-text-muted);
-	margin-bottom: var(--space-2);
-}

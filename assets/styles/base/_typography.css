@@ -1,24 +1,10 @@
 /**
- * Typography: self-hosted font-face declarations (font-display: swap
- * avoids invisible-text flash) + the heading/body type scale.
- * Two families only, three weights each — kept deliberately small.
+ * Typography foundations.
+ * Font stacks live in _variables.css (--font-heading / --font-body).
+ * Local @font-face files are not present yet — until they are added,
+ * the browser uses the system/serif fallbacks in those stacks.
+ * Do not reintroduce @font-face pointing at missing assets.
  */
-
-@font-face {
-	font-family: 'Inter';
-	src: url('../fonts/inter-variable.woff2') format('woff2');
-	font-weight: 100 900;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Poppins';
-	src: url('../fonts/poppins-600.woff2') format('woff2');
-	font-weight: 600;
-	font-style: normal;
-	font-display: swap;
-}
 
 h1, h2, h3, h4 {
 	font-family: var(--font-heading);
