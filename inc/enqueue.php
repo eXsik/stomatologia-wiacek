@@ -17,9 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 function sw_enqueue_assets() {
 	$is_dev = defined( 'WP_DEBUG' ) && WP_DEBUG;
 
-	// Fonts: self-hosted, preloaded, font-display: swap handled in @font-face.
-	// Two families only (Poppins / Inter), limited weights — see
-	// assets/styles/base/_typography.css for @font-face declarations.
+	// Typography foundations (heading/body scale). Font stacks are CSS
+	// fallbacks in _variables.css until local Source Serif 4 / Inter files exist.
 	wp_enqueue_style(
 		'sw-fonts',
 		SW_THEME_URI . '/assets/styles/base/_typography.css',
@@ -99,10 +98,10 @@ function sw_dequeue_jquery() {
 // add_action( 'wp_enqueue_scripts', 'sw_dequeue_jquery', 20 );
 
 /**
- * Preload the primary body font weight to shorten the critical
- * rendering path (avoids a flash of invisible/fallback text on LCP text).
+ * Font preload — disabled while no local font files exist under assets/fonts/.
+ * Re-enable (and point at real files) when Source Serif 4 / Inter binaries are added.
  */
 function sw_preload_fonts() {
-	echo '<link rel="preload" href="' . esc_url( SW_THEME_URI . '/assets/fonts/inter-variable.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	// No-op: do not preload missing font files.
 }
 add_action( 'wp_head', 'sw_preload_fonts', 1 );
