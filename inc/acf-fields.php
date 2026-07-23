@@ -33,11 +33,36 @@ acf_add_local_field_group( array(
 			'type'  => 'tab',
 		),
 		array(
+			'key'   => 'field_hero_eyebrow',
+			'label' => 'Eyebrow (nad nagłówkiem)',
+			'name'  => 'hero_eyebrow',
+			'type'  => 'text',
+		),
+		array(
+			'key'   => 'field_hero_heading_before',
+			'label' => 'Nagłówek — przed wyróżnieniem',
+			'name'  => 'hero_heading_before',
+			'type'  => 'text',
+		),
+		array(
+			'key'   => 'field_hero_heading_emphasis',
+			'label' => 'Nagłówek — wyróżnienie (kursywa)',
+			'name'  => 'hero_heading_emphasis',
+			'type'  => 'text',
+		),
+		array(
+			'key'   => 'field_hero_heading_after',
+			'label' => 'Nagłówek — po wyróżnieniu',
+			'name'  => 'hero_heading_after',
+			'type'  => 'text',
+		),
+		array(
 			'key'           => 'field_hero_headline',
-			'label'         => 'Nagłówek',
+			'label'         => 'Nagłówek (zapasowy)',
 			'name'          => 'hero_headline',
 			'type'          => 'text',
-			'default_value' => 'Nowoczesna stomatologia bez stresu w Ostrowie Wielkopolskim',
+			'instructions'  => 'Używany tylko gdy pola podziału nagłówka są puste.',
+			'default_value' => '',
 		),
 		array(
 			'key'   => 'field_hero_subheadline',

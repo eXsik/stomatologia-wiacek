@@ -52,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="sw-visually-hidden"><?php esc_html_e( 'Zadzwoń: ', 'stomatologia-wiacek' ); ?></span>
 				<?php echo esc_html( sw_get_option( 'clinic_phone', '62 123 45 67' ) ); ?>
 			</a>
-			<a href="#kontakt" class="sw-btn sw-btn--accent"><?php esc_html_e( 'Umów wizytę', 'stomatologia-wiacek' ); ?></a>
+			<a href="<?php echo esc_url( sw_get_option( 'booking_url', '#kontakt' ) ); ?>" class="sw-btn sw-btn--accent"><?php esc_html_e( 'Umów wizytę', 'stomatologia-wiacek' ); ?></a>
 
 			<button type="button" class="sw-nav-toggle" aria-expanded="false" aria-controls="sw-mobile-menu" data-sw-mobile-menu-toggle>
 				<span class="sw-visually-hidden"><?php esc_html_e( 'Otwórz menu', 'stomatologia-wiacek' ); ?></span>

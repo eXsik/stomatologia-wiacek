@@ -25,6 +25,7 @@ function sw_clinic_defaults() {
 		'clinic_address'          => 'ul. Przykładowa 1, 63-400 Ostrów Wielkopolski',
 		'clinic_lat'              => '',
 		'clinic_lng'              => '',
+		'booking_url'             => '',
 		'social_facebook'         => '',
 		'social_instagram'        => '',
 		'google_rating'           => '',
@@ -89,6 +90,7 @@ function sw_sanitize_clinic_options( $input ) {
 	$output['clinic_address']      = isset( $input['clinic_address'] ) ? sanitize_text_field( $input['clinic_address'] ) : '';
 	$output['clinic_lat']          = isset( $input['clinic_lat'] ) ? sanitize_text_field( $input['clinic_lat'] ) : '';
 	$output['clinic_lng']          = isset( $input['clinic_lng'] ) ? sanitize_text_field( $input['clinic_lng'] ) : '';
+	$output['booking_url']         = isset( $input['booking_url'] ) ? esc_url_raw( $input['booking_url'] ) : '';
 	$output['social_facebook']     = isset( $input['social_facebook'] ) ? esc_url_raw( $input['social_facebook'] ) : '';
 	$output['social_instagram']    = isset( $input['social_instagram'] ) ? esc_url_raw( $input['social_instagram'] ) : '';
 	$output['google_rating']       = isset( $input['google_rating'] ) ? sanitize_text_field( $input['google_rating'] ) : '';
@@ -155,6 +157,13 @@ function sw_render_clinic_settings_page() {
 				<tr>
 					<th scope="row"><label for="sw_clinic_address"><?php esc_html_e( 'Adres', 'stomatologia-wiacek' ); ?></label></th>
 					<td><input name="sw_clinic[clinic_address]" type="text" id="sw_clinic_address" value="<?php echo esc_attr( $options['clinic_address'] ); ?>" class="large-text"></td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="sw_clinic_booking_url"><?php esc_html_e( 'URL rezerwacji', 'stomatologia-wiacek' ); ?></label></th>
+					<td>
+						<input name="sw_clinic[booking_url]" type="url" id="sw_clinic_booking_url" value="<?php echo esc_attr( $options['booking_url'] ); ?>" class="regular-text" placeholder="https://">
+						<p class="description"><?php esc_html_e( 'Globalny link przycisku „Umów wizytę” w nagłówku, menu mobilnym i sekcji hero. Puste pole → #kontakt.', 'stomatologia-wiacek' ); ?></p>
+					</td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="sw_clinic_lat"><?php esc_html_e( 'Szerokość geogr. (lat)', 'stomatologia-wiacek' ); ?></label></th>
