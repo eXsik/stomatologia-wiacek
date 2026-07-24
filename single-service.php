@@ -35,7 +35,7 @@ get_header();
 				</div>
 
 				<div class="sw-single-service__cta">
-					<?php sw_button( __( 'Umów wizytę', 'stomatologia-wiacek' ), home_url( '/#kontakt' ), 'accent', 'lg' ); ?>
+					<?php sw_button( __( 'Umów wizytę', 'stomatologia-wiacek' ), sw_booking_url(), 'accent', 'lg' ); ?>
 				</div>
 			</article>
 		<?php endwhile; ?>

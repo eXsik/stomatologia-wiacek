@@ -71,20 +71,34 @@ $privacy_url = function_exists( 'get_privacy_policy_url' ) ? get_privacy_policy_
 				<ul class="sw-footer__hours">
 					<?php
 					$hours = sw_get_option( 'clinic_hours', array() );
-					if ( sw_has_rows( $hours ) ) :
-						foreach ( $hours as $row ) :
-							if ( empty( $row['day'] ) || empty( $row['open'] ) || empty( $row['close'] ) ) {
-								continue;
-							}
-							?>
-							<li>
-								<span><?php echo esc_html( $row['day'] ); ?></span>
-								<span><?php echo esc_html( $row['open'] . '–' . $row['close'] ); ?></span>
-							</li>
-							<?php
-						endforeach;
-					endif;
-					?>
+					if ( ! sw_has_rows( $hours ) ) {
+						$hours = array(
+							array( 'day' => 'Poniedziałek', 'open' => '09:00', 'close' => '17:00' ),
+							array( 'day' => 'Wtorek', 'open' => '09:00', 'close' => '17:00' ),
+							array( 'day' => 'Środa', 'open' => '09:00', 'close' => '17:00' ),
+							array( 'day' => 'Czwartek', 'open' => '09:00', 'close' => '17:00' ),
+							array( 'day' => 'Piątek', 'open' => '09:00', 'close' => '17:00' ),
+							array( 'day' => 'Sobota', 'open' => '', 'close' => '' ),
+							array( 'day' => 'Niedziela', 'open' => '', 'close' => '' ),
+						);
+					}
+					foreach ( $hours as $row ) :
+						if ( empty( $row['day'] ) ) {
+							continue;
+						}
+						$is_open = ! empty( $row['open'] ) && ! empty( $row['close'] );
+						?>
+						<li>
+							<span><?php echo esc_html( $row['day'] ); ?></span>
+							<span>
+								<?php
+								echo $is_open
+									? esc_html( $row['open'] . '–' . $row['close'] )
+									: esc_html__( 'Zamknięte', 'stomatologia-wiacek' );
+								?>
+							</span>
+						</li>
+					<?php endforeach; ?>
 				</ul>
 			</div>
 
@@ -117,6 +131,7 @@ $privacy_url = function_exists( 'get_privacy_policy_url' ) ? get_privacy_policy_
 	</footer>
 
 	<?php get_template_part( 'template-parts/layout/sticky-cta-bar' ); ?>
+	<?php get_template_part( 'template-parts/components/booking-demo' ); ?>
 
 	<?php wp_footer(); ?>
 </body>

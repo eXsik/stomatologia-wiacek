@@ -95,7 +95,7 @@ function sw_dequeue_jquery() {
 		wp_deregister_script( 'jquery' );
 	}
 }
-// add_action( 'wp_enqueue_scripts', 'sw_dequeue_jquery', 20 );
+add_action( 'wp_enqueue_scripts', 'sw_dequeue_jquery', 20 );
 
 /**
  * Font preload — disabled while no local font files exist under assets/fonts/.
@@ -105,3 +105,14 @@ function sw_preload_fonts() {
 	// No-op: do not preload missing font files.
 }
 add_action( 'wp_head', 'sw_preload_fonts', 1 );
+
+/**
+ * Trim common front-end noise that hurts Best Practices / Performance.
+ */
+function sw_clean_head() {
+	remove_action( 'wp_head', 'wp_generator' );
+	remove_action( 'wp_head', 'wlwmanifest_link' );
+	remove_action( 'wp_head', 'rsd_link' );
+	remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+}
+add_action( 'after_setup_theme', 'sw_clean_head' );

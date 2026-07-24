@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $phone   = sw_get_option( 'clinic_phone', '62 123 45 67' );
 $address = sw_get_option( 'clinic_address', 'ul. Przykładowa 1, 63-400 Ostrów Wielkopolski' );
-$booking = sw_get_option( 'booking_url', '#kontakt' );
+$booking = sw_booking_url();
 $hours   = sw_get_option( 'clinic_hours', array() );
 
 $hours_summary = '';
@@ -64,7 +64,7 @@ if ( '' === $hours_summary ) {
 		</div>
 
 		<div class="sw-contact-cta__action">
-			<a class="sw-btn sw-btn--accent sw-contact-cta__btn" href="<?php echo esc_url( $booking ); ?>">
+			<a class="sw-btn sw-btn--accent sw-btn--arrow sw-contact-cta__btn" href="<?php echo esc_url( $booking ); ?>"<?php echo sw_booking_trigger_attrs(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 				<?php esc_html_e( 'Umów wizytę', 'stomatologia-wiacek' ); ?>
 			</a>
 		</div>

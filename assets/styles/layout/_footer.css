@@ -198,6 +198,7 @@
 	z-index: 40;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	padding-bottom: env(safe-area-inset-bottom, 0px);
 	box-shadow: 0 -2px 12px rgba(18, 63, 67, 0.1);
 }
 
@@ -214,11 +215,19 @@
 .sw-sticky-cta__call {
 	background: var(--color-surface);
 	color: var(--color-brand-dark);
+	border-top: 1px solid var(--color-border);
 }
 
 .sw-sticky-cta__book {
 	background: var(--color-accent);
 	color: var(--color-white);
+}
+
+/* Keep page content clear of the fixed bar on mobile */
+@media (max-width: 899px) {
+	body {
+		padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px));
+	}
 }
 
 @media (min-width: 900px) {

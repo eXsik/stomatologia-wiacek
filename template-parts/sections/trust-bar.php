@@ -15,10 +15,10 @@ $stats = sw_get_trust_stats();
 if ( ! sw_has_rows( $stats ) ) {
 	// Fallback demo content so the section is never empty during setup.
 	$stats = array(
-		array( 'icon' => 'star', 'value' => '4.9/5', 'label' => 'Ocena Google' ),
-		array( 'icon' => 'years', 'value' => '15+ lat', 'label' => 'Doświadczenia' ),
-		array( 'icon' => 'scanner', 'value' => 'Skaner 3D', 'label' => 'Bez odcisków' ),
-		array( 'icon' => 'microscope', 'value' => 'Mikroskop', 'label' => 'Precyzyjne leczenie kanałowe' ),
+		array( 'value' => '4.9/5', 'label' => 'Ocena Google' ),
+		array( 'value' => '15+ lat', 'label' => 'Doświadczenia' ),
+		array( 'value' => 'Skaner 3D', 'label' => 'Bez odcisków' ),
+		array( 'value' => 'Mikroskop', 'label' => 'Precyzyjne leczenie kanałowe' ),
 	);
 }
 ?>

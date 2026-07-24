@@ -112,20 +112,6 @@ acf_add_local_field_group( array(
 			'type'  => 'tab',
 		),
 		array(
-			'key'     => 'field_trust_1_icon',
-			'label'   => 'Statystyka 1 — ikona',
-			'name'    => 'trust_1_icon',
-			'type'    => 'select',
-			'choices' => array(
-				'star'       => 'Gwiazda (ocena Google)',
-				'years'      => 'Lata doświadczenia',
-				'scanner'    => 'Skaner 3D',
-				'cbct'       => 'Tomografia CBCT',
-				'microscope' => 'Mikroskop',
-			),
-			'default_value' => 'star',
-		),
-		array(
 			'key'           => 'field_trust_1_value',
 			'label'         => 'Statystyka 1 — wartość',
 			'name'          => 'trust_1_value',
@@ -138,20 +124,6 @@ acf_add_local_field_group( array(
 			'name'          => 'trust_1_label',
 			'type'          => 'text',
 			'default_value' => 'Ocena Google',
-		),
-		array(
-			'key'     => 'field_trust_2_icon',
-			'label'   => 'Statystyka 2 — ikona',
-			'name'    => 'trust_2_icon',
-			'type'    => 'select',
-			'choices' => array(
-				'star'       => 'Gwiazda (ocena Google)',
-				'years'      => 'Lata doświadczenia',
-				'scanner'    => 'Skaner 3D',
-				'cbct'       => 'Tomografia CBCT',
-				'microscope' => 'Mikroskop',
-			),
-			'default_value' => 'years',
 		),
 		array(
 			'key'           => 'field_trust_2_value',
@@ -168,20 +140,6 @@ acf_add_local_field_group( array(
 			'default_value' => 'Doświadczenia',
 		),
 		array(
-			'key'     => 'field_trust_3_icon',
-			'label'   => 'Statystyka 3 — ikona',
-			'name'    => 'trust_3_icon',
-			'type'    => 'select',
-			'choices' => array(
-				'star'       => 'Gwiazda (ocena Google)',
-				'years'      => 'Lata doświadczenia',
-				'scanner'    => 'Skaner 3D',
-				'cbct'       => 'Tomografia CBCT',
-				'microscope' => 'Mikroskop',
-			),
-			'default_value' => 'scanner',
-		),
-		array(
 			'key'           => 'field_trust_3_value',
 			'label'         => 'Statystyka 3 — wartość',
 			'name'          => 'trust_3_value',
@@ -194,20 +152,6 @@ acf_add_local_field_group( array(
 			'name'          => 'trust_3_label',
 			'type'          => 'text',
 			'default_value' => 'Bez odcisków',
-		),
-		array(
-			'key'     => 'field_trust_4_icon',
-			'label'   => 'Statystyka 4 — ikona',
-			'name'    => 'trust_4_icon',
-			'type'    => 'select',
-			'choices' => array(
-				'star'       => 'Gwiazda (ocena Google)',
-				'years'      => 'Lata doświadczenia',
-				'scanner'    => 'Skaner 3D',
-				'cbct'       => 'Tomografia CBCT',
-				'microscope' => 'Mikroskop',
-			),
-			'default_value' => 'microscope',
 		),
 		array(
 			'key'           => 'field_trust_4_value',

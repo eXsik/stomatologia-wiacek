@@ -54,7 +54,6 @@ function sw_get_trust_stats() {
 			continue;
 		}
 		$stats[] = array(
-			'icon'  => get_field( 'trust_' . $i . '_icon' ) ?: 'star',
 			'value' => $value,
 			'label' => get_field( 'trust_' . $i . '_label' ) ?: '',
 		);
@@ -129,6 +128,46 @@ function sw_phone_href( $phone_display ) {
 		$digits = '48' . $digits; // assume PL country code if not present.
 	}
 	return 'tel:+' . $digits;
+}
+
+/**
+ * Whether booking CTAs should open the in-theme demo widget.
+ * Real Booksy / ZnanyLekarz URL in Dane gabinetu disables the demo.
+ *
+ * @return bool
+ */
+function sw_booking_is_demo() {
+	$configured = sw_get_option( 'booking_url', '' );
+	return ! ( is_string( $configured ) && '' !== trim( $configured ) );
+}
+
+/**
+ * Global booking CTA URL.
+ * Empty clinic setting → demo modal hash (portfolio ZnanyLekarz-style widget).
+ * Configured URL → external scheduler (opens in new tab via trigger attrs).
+ *
+ * @return string Sanitized URL safe for href attributes.
+ */
+function sw_booking_url() {
+	if ( ! sw_booking_is_demo() ) {
+		return esc_url( trim( (string) sw_get_option( 'booking_url', '' ) ) );
+	}
+
+	// home_url + fragment survives esc_url(); bare "#…" does not.
+	return esc_url( home_url( '/#sw-booking-demo' ) );
+}
+
+/**
+ * Extra attributes for booking links (demo open vs external tab).
+ *
+ * @return string Space-prefixed HTML attributes.
+ */
+function sw_booking_trigger_attrs() {
+	if ( sw_booking_is_demo() ) {
+		return ' data-sw-booking-open';
+	}
+
+	return ' target="_blank" rel="noopener noreferrer"';
 }
 
 /**

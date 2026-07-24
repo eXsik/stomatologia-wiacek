@@ -37,7 +37,7 @@ class SW_Nav_Walker extends Walker_Nav_Menu {
 			'class' => 'sw-nav-link',
 		);
 
-		if ( in_array( 'current-menu-item', $item->classes, true ) ) {
+		if ( function_exists( 'sw_nav_item_is_current' ) ? sw_nav_item_is_current( $item ) : in_array( 'current-menu-item', $item->classes, true ) ) {
 			$attrs['aria-current'] = 'page';
 		}
 

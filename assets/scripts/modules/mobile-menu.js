@@ -8,6 +8,7 @@
 export function initMobileMenu() {
 	const toggle = document.querySelector( '[data-sw-mobile-menu-toggle]' );
 	const menu = document.getElementById( 'sw-mobile-menu' );
+	const closeBtn = menu ? menu.querySelector( '[data-sw-mobile-menu-close]' ) : null;
 
 	if ( ! toggle || ! menu ) {
 		return;
@@ -46,6 +47,10 @@ export function initMobileMenu() {
 		const isOpen = toggle.getAttribute( 'aria-expanded' ) === 'true';
 		isOpen ? closeMenu() : openMenu();
 	} );
+
+	if ( closeBtn ) {
+		closeBtn.addEventListener( 'click', closeMenu );
+	}
 
 	menu.addEventListener( 'keydown', ( event ) => {
 		if ( event.key === 'Escape' ) {

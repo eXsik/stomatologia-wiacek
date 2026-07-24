@@ -161,8 +161,8 @@ function sw_render_clinic_settings_page() {
 				<tr>
 					<th scope="row"><label for="sw_clinic_booking_url"><?php esc_html_e( 'URL rezerwacji', 'stomatologia-wiacek' ); ?></label></th>
 					<td>
-						<input name="sw_clinic[booking_url]" type="url" id="sw_clinic_booking_url" value="<?php echo esc_attr( $options['booking_url'] ); ?>" class="regular-text" placeholder="https://">
-						<p class="description"><?php esc_html_e( 'Globalny link przycisku „Umów wizytę” w nagłówku, menu mobilnym i sekcji hero. Puste pole → #kontakt.', 'stomatologia-wiacek' ); ?></p>
+						<input name="sw_clinic[booking_url]" type="url" id="sw_clinic_booking_url" value="<?php echo esc_attr( $options['booking_url'] ); ?>" class="regular-text" placeholder="https://www.znanylekarz.pl/...">
+						<p class="description"><?php esc_html_e( 'Puste = demonstracyjny widget rezerwacji (dane testowe). Wklej URL ZnanyLekarz / Booksy, aby otwierać prawdziwy kalendarz.', 'stomatologia-wiacek' ); ?></p>
 					</td>
 				</tr>
 				<tr>

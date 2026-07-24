@@ -54,3 +54,61 @@ function sw_disable_emojis() {
 	remove_action( 'admin_print_styles', 'print_emoji_styles' );
 }
 add_action( 'init', 'sw_disable_emojis' );
+
+/**
+ * Drop false "current" state on hash / same-page custom links.
+ * One-page menus often point at /#kontakt etc.; WordPress marks those
+ * as current-menu-item on the front page and the nav stays underlined.
+ *
+ * @param array   $classes Menu item classes.
+ * @param WP_Post $item    Menu item.
+ * @return array
+ */
+function sw_nav_menu_css_class( $classes, $item ) {
+	if ( ! sw_nav_item_is_current( $item ) ) {
+		$classes = array_diff(
+			$classes,
+			array(
+				'current-menu-item',
+				'current_page_item',
+				'current-menu-ancestor',
+				'current-menu-parent',
+			)
+		);
+	}
+
+	return $classes;
+}
+add_filter( 'nav_menu_css_class', 'sw_nav_menu_css_class', 10, 2 );
+
+/**
+ * Whether a menu item should expose "current" UI (underline / aria-current).
+ * Hash links to the front page are never treated as current.
+ *
+ * @param object $item Menu item.
+ * @return bool
+ */
+function sw_nav_item_is_current( $item ) {
+	if ( ! is_object( $item ) || empty( $item->classes ) || ! is_array( $item->classes ) ) {
+		return false;
+	}
+
+	if ( ! in_array( 'current-menu-item', $item->classes, true ) ) {
+		return false;
+	}
+
+	$url = isset( $item->url ) ? (string) $item->url : '';
+	if ( '' === $url ) {
+		return true;
+	}
+
+	// Front-page section anchors must not stay permanently underlined.
+	if ( false !== strpos( $url, '#' ) ) {
+		$path = (string) wp_parse_url( $url, PHP_URL_PATH );
+		if ( '' === $path || '/' === $path ) {
+			return false;
+		}
+	}
+
+	return true;
+}

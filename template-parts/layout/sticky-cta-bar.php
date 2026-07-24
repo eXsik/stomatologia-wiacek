@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<a href="<?php echo esc_url( sw_phone_href( sw_get_option( 'clinic_phone', '62 123 45 67' ) ) ); ?>" class="sw-sticky-cta__call">
 		<?php esc_html_e( 'Zadzwoń', 'stomatologia-wiacek' ); ?>
 	</a>
-	<a href="#kontakt" class="sw-sticky-cta__book">
+	<a href="<?php echo esc_url( sw_booking_url() ); ?>" class="sw-sticky-cta__book"<?php echo sw_booking_trigger_attrs(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 		<?php esc_html_e( 'Umów wizytę', 'stomatologia-wiacek' ); ?>
 	</a>
 </div>

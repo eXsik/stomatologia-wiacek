@@ -34,7 +34,7 @@ $hero_image  = get_field( 'hero_media' );
 $cta1_label  = get_field( 'hero_cta_primary_label' ) ?: 'Umów wizytę';
 $cta1_link   = trim( (string) ( get_field( 'hero_cta_primary_link' ) ?: '' ) );
 if ( '' === $cta1_link ) {
-	$cta1_link = sw_get_option( 'booking_url', '#kontakt' );
+	$cta1_link = sw_booking_url();
 }
 $cta2_label = get_field( 'hero_cta_secondary_label' ) ?: 'Poznaj ofertę';
 $cta2_link  = get_field( 'hero_cta_secondary_link' ) ?: '#oferta';
@@ -69,7 +69,7 @@ $section_class = $has_media ? 'sw-hero' : 'sw-hero sw-hero--text-only';
 				<p class="sw-hero__subheading"><?php echo esc_html( $subheadline ); ?></p>
 
 				<div class="sw-hero__ctas">
-					<a href="<?php echo esc_url( $cta1_link ); ?>" class="sw-btn sw-btn--accent"><?php echo esc_html( $cta1_label ); ?></a>
+					<a href="<?php echo esc_url( $cta1_link ); ?>" class="sw-btn sw-btn--accent sw-btn--arrow"<?php echo ( function_exists( 'sw_booking_is_demo' ) && sw_booking_is_demo() && $cta1_link === sw_booking_url() ) ? sw_booking_trigger_attrs() : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_html( $cta1_label ); ?></a>
 					<a href="<?php echo esc_url( $cta2_link ); ?>" class="sw-btn sw-btn--ghost sw-hero__cta-secondary"><?php echo esc_html( $cta2_label ); ?></a>
 				</div>
 			</div>
