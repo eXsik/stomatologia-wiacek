@@ -42,9 +42,8 @@ body.admin-bar .sw-header {
 	align-items: center;
 	justify-content: space-between;
 	gap: var(--space-4);
-	max-width: var(--container-wide);
-	min-height: 4.25rem; /* ~68px */
-	padding-block: 0.75rem;
+	min-height: 4.5rem;
+	padding-block: 0.875rem;
 	transition: min-height var(--transition-base), padding var(--transition-base);
 }
 

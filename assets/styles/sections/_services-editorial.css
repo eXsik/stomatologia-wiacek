@@ -6,7 +6,7 @@
 .sw-services {
 	background: var(--color-bg);
 	color: var(--color-text);
-	padding-block: var(--space-6);
+	padding-block: clamp(var(--space-6), 8vw, var(--space-section-tight));
 }
 
 .sw-services__layout {
@@ -46,16 +46,17 @@
 .sw-services__heading {
 	margin: 0;
 	font-family: var(--font-heading);
-	font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+	font-size: clamp(1.875rem, 3.5vw, 2.875rem);
 	font-weight: 400;
-	line-height: 1.15;
+	line-height: 1.1;
+	letter-spacing: -0.01em;
 	color: var(--color-brand-dark);
 	text-align: left;
 	text-wrap: balance;
 }
 
 .sw-services__detail {
-	margin: var(--space-4) 0 0;
+	margin: var(--space-5) 0 0;
 	max-width: 13rem;
 	aspect-ratio: 1;
 	overflow: hidden;
@@ -157,21 +158,22 @@
 
 @media (min-width: 900px) {
 	.sw-services {
-		padding-block: var(--space-7);
+		padding-block: var(--space-section-tight);
 	}
 
 	.sw-services__layout {
 		grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
-		gap: clamp(var(--space-5), 4vw, var(--space-7));
+		gap: clamp(var(--space-6), 4vw, var(--space-8));
 		align-items: start;
 	}
 
 	.sw-services__heading {
-		font-size: clamp(2.25rem, 2.4vw, 3rem);
+		font-size: clamp(2.375rem, 2.6vw, 3.25rem);
+		line-height: 1.08;
 	}
 
 	.sw-services__detail {
-		margin-top: var(--space-5);
+		margin-top: var(--space-6);
 		max-width: 14rem;
 	}
 

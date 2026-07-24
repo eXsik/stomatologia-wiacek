@@ -6,7 +6,7 @@
 .sw-doctor-feature {
 	background: var(--color-brand-dark);
 	color: var(--color-white);
-	padding-block: var(--space-6);
+	padding-block: clamp(var(--space-6), 8vw, var(--space-section-tight));
 }
 
 .sw-doctor-feature__layout {
@@ -24,7 +24,7 @@
 	display: block;
 	width: 100%;
 	max-width: 22rem;
-	aspect-ratio: 1;
+	aspect-ratio: 3 / 4;
 	object-fit: cover;
 	border-radius: var(--radius-sm);
 	background: color-mix(in srgb, var(--color-white) 8%, var(--color-brand));
@@ -114,12 +114,12 @@
 
 @media (min-width: 900px) {
 	.sw-doctor-feature {
-		padding-block: var(--space-7);
+		padding-block: var(--space-section-tight);
 	}
 
 	.sw-doctor-feature__layout {
 		grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.4fr) minmax(0, 0.32fr);
-		gap: clamp(var(--space-5), 4vw, var(--space-7));
+		gap: clamp(var(--space-6), 4vw, var(--space-8));
 		align-items: center;
 	}
 
@@ -128,7 +128,8 @@
 	}
 
 	.sw-doctor-feature__name {
-		font-size: clamp(2rem, 2.2vw, 2.75rem);
+		font-size: clamp(2rem, 2.2vw, 2.875rem);
+		line-height: 1.1;
 	}
 
 	.sw-doctor-feature__quals {

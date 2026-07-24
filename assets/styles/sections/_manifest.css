@@ -6,8 +6,10 @@
 .sw-manifest {
 	background: var(--color-bg);
 	color: var(--color-text);
-	padding-block: var(--space-6);
+	padding-block: clamp(var(--space-6), 8vw, var(--space-section-tight));
 	overflow-x: clip;
+	container-type: inline-size;
+	container-name: sw-manifest;
 }
 
 .sw-manifest__layout {
@@ -15,8 +17,8 @@
 	grid-template-columns: 1fr;
 	gap: var(--space-5);
 	align-items: start;
-	width: min(100%, var(--container-wide));
-	margin-inline: auto;
+	width: 100%;
+	margin-inline: 0;
 	padding-inline: var(--container-padding);
 	box-sizing: border-box;
 }
@@ -49,11 +51,12 @@
 }
 
 .sw-manifest__heading {
-	margin: 0 0 var(--space-4);
+	margin: 0 0 var(--space-5);
 	font-family: var(--font-heading);
-	font-size: clamp(2rem, 4vw, 3rem);
+	font-size: clamp(2rem, 4vw, 3.125rem);
 	font-weight: 400;
-	line-height: 1.12;
+	line-height: 1.08;
+	letter-spacing: -0.01em;
 	color: var(--color-brand-dark);
 	text-wrap: balance;
 }
@@ -77,7 +80,7 @@
 	margin: 0;
 	padding: 0;
 	display: grid;
-	gap: var(--space-3);
+	gap: var(--space-4);
 }
 
 .sw-manifest__item {
@@ -137,22 +140,24 @@
 
 @media (min-width: 900px) {
 	.sw-manifest {
-		padding-block: var(--space-7);
+		padding-block: var(--space-section-tight);
 	}
 
 	.sw-manifest__layout {
 		grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
-		gap: clamp(var(--space-5), 4vw, var(--space-7));
+		gap: clamp(var(--space-6), 4vw, var(--space-8));
 		align-items: center;
-		padding-inline: max(
+		/* Left rail matches .sw-container; media bleeds to viewport right. */
+		padding-left: max(
 			var(--container-padding),
-			calc((100vw - var(--container-wide)) / 2 + var(--container-padding))
+			calc((100cqw - min(100cqw, var(--container-wide))) / 2 + var(--container-padding))
 		);
 		padding-right: 0;
 	}
 
 	.sw-manifest__heading {
-		font-size: clamp(2.5rem, 2.8vw, 3.5rem);
+		font-size: clamp(2.5rem, 2.8vw, 3.625rem);
+		line-height: 1.06;
 	}
 
 	.sw-manifest__media {

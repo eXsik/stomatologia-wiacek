@@ -6,7 +6,7 @@
 .sw-contact-cta {
 	background: var(--color-bg-alt);
 	color: var(--color-text);
-	padding-block: var(--space-6);
+	padding-block: clamp(var(--space-6), 8vw, var(--space-section-tight));
 	border-block: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
 }
 
@@ -18,11 +18,12 @@
 }
 
 .sw-contact-cta__heading {
-	margin: 0 0 var(--space-3);
+	margin: 0 0 var(--space-4);
 	font-family: var(--font-heading);
-	font-size: clamp(2rem, 3.5vw, 3rem);
+	font-size: clamp(2rem, 3.5vw, 3.125rem);
 	font-weight: 400;
-	line-height: 1.15;
+	line-height: 1.08;
+	letter-spacing: -0.01em;
 	color: var(--color-brand-dark);
 	text-align: left;
 }
@@ -108,17 +109,18 @@ a.sw-contact-cta__value:focus-visible {
 
 @media (min-width: 900px) {
 	.sw-contact-cta {
-		padding-block: var(--space-7);
+		padding-block: var(--space-section-tight);
 	}
 
 	.sw-contact-cta__inner {
 		grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.6fr) auto;
-		gap: var(--space-6);
+		gap: var(--space-7);
 		align-items: center;
 	}
 
 	.sw-contact-cta__heading {
-		font-size: clamp(2.25rem, 2.5vw, 3.25rem);
-		margin-bottom: var(--space-2);
+		font-size: clamp(2.375rem, 2.6vw, 3.375rem);
+		line-height: 1.06;
+		margin-bottom: var(--space-3);
 	}
 }

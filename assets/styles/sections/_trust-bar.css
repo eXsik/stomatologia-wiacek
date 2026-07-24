@@ -14,8 +14,6 @@
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0;
-	width: min(100%, var(--container-wide));
-	margin-inline: auto;
 }
 
 .sw-trust-bar__item {
@@ -25,8 +23,8 @@
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	gap: 0.35rem;
-	padding-block: 1rem;
+	gap: 0.4rem;
+	padding-block: 1.125rem;
 	padding-inline: var(--space-3);
 	border: none;
 }
@@ -45,18 +43,20 @@
 
 .sw-trust-bar__value {
 	font-family: var(--font-heading);
-	font-size: clamp(1.25rem, 3vw, 1.625rem);
+	font-size: clamp(1.375rem, 3.2vw, 1.75rem);
 	font-weight: 400;
 	font-style: normal;
-	line-height: 1.1;
+	line-height: 1.05;
+	letter-spacing: -0.02em;
 	color: var(--color-brand-dark);
 }
 
 .sw-trust-bar__label {
 	font-family: var(--font-body);
-	font-size: 0.75rem;
+	font-size: 0.6875rem;
 	font-weight: 400;
-	line-height: 1.35;
+	line-height: 1.4;
+	letter-spacing: 0.03em;
 	color: var(--color-text-muted);
 	max-width: 16ch;
 }
@@ -78,10 +78,10 @@
 	}
 
 	.sw-trust-bar__item {
-		min-height: 6.5rem;
-		padding-block: 1.375rem;
+		min-height: 7.25rem;
+		padding-block: 1.625rem;
 		padding-inline: var(--space-4);
-		gap: 0.45rem;
+		gap: 0.5rem;
 	}
 
 	.sw-trust-bar__item:nth-child(odd)::after {
@@ -100,11 +100,12 @@
 	}
 
 	.sw-trust-bar__value {
-		font-size: clamp(1.625rem, 1.8vw, 2rem);
+		font-size: clamp(1.875rem, 2.1vw, 2.375rem);
 	}
 
 	.sw-trust-bar__label {
 		max-width: none;
-		font-size: 0.75rem;
+		font-size: 0.6875rem;
+		letter-spacing: 0.04em;
 	}
 }

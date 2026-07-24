@@ -6,7 +6,7 @@
 .sw-faq {
 	background: var(--color-bg);
 	color: var(--color-text);
-	padding-block: var(--space-6);
+	padding-block: clamp(var(--space-6), 8vw, var(--space-section-tight));
 }
 
 .sw-faq__layout {
@@ -14,12 +14,11 @@
 	grid-template-columns: 1fr;
 	gap: var(--space-5);
 	align-items: start;
-	max-width: none;
 }
 
 .sw-faq__intro {
 	min-width: 0;
-	max-width: 26rem;
+	max-width: 28rem;
 }
 
 .sw-faq__eyebrow {
@@ -47,9 +46,10 @@
 .sw-faq__heading {
 	margin: 0;
 	font-family: var(--font-heading);
-	font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+	font-size: clamp(1.875rem, 3.2vw, 2.875rem);
 	font-weight: 400;
-	line-height: 1.15;
+	line-height: 1.1;
+	letter-spacing: -0.01em;
 	color: var(--color-brand-dark);
 	text-align: left;
 	text-wrap: balance;
@@ -58,6 +58,7 @@
 .sw-faq__list {
 	display: grid;
 	gap: 0;
+	width: 100%;
 	min-width: 0;
 	border-top: 1px solid color-mix(in srgb, var(--color-border) 75%, transparent);
 }
@@ -78,12 +79,14 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: var(--space-3);
+	gap: var(--space-4);
+	width: 100%;
 	min-height: 3.75rem;
 	padding-block: 1.125rem;
 	font-family: var(--font-body);
-	font-size: 1rem;
+	font-size: 1.0625rem;
 	font-weight: 500;
+	line-height: 1.35;
 	color: var(--color-brand-dark);
 }
 
@@ -109,9 +112,13 @@
 .sw-faq__answer {
 	padding: 0 0 1.25rem;
 	color: var(--color-text-muted);
-	font-size: var(--fs-sm);
+	font-size: var(--fs-base);
 	line-height: 1.6;
-	max-width: 54ch;
+	max-width: none;
+}
+
+.sw-faq__answer p {
+	max-width: none;
 }
 
 .sw-faq__answer > *:first-child {
@@ -124,15 +131,18 @@
 
 @media (min-width: 900px) {
 	.sw-faq {
-		padding-block: var(--space-7);
+		padding-block: var(--space-section-tight);
 	}
 
 	.sw-faq__layout {
-		grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
-		gap: clamp(var(--space-5), 4vw, var(--space-7));
+		/* Same split as services — shared left rail + right list column */
+		grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+		gap: clamp(var(--space-6), 4vw, var(--space-8));
+		align-items: start;
 	}
 
 	.sw-faq__heading {
-		font-size: clamp(2.25rem, 2.4vw, 3rem);
+		font-size: clamp(2.375rem, 2.6vw, 3.25rem);
+		line-height: 1.08;
 	}
 }
