@@ -1,0 +1,208 @@
+/**
+ * Portfolio demo booking widget — ZnanyLekarz / Booksy style overlay.
+ */
+
+.sw-booking-demo {
+	position: fixed;
+	inset: 0;
+	z-index: 120;
+	display: grid;
+	place-items: end center;
+	padding: var(--space-3);
+	padding-bottom: max(var(--space-3), env(safe-area-inset-bottom, 0px));
+}
+
+.sw-booking-demo[hidden] {
+	display: none;
+}
+
+.sw-booking-demo__backdrop {
+	position: absolute;
+	inset: 0;
+	background: color-mix(in srgb, var(--color-brand-dark) 48%, transparent);
+	border: 0;
+	cursor: pointer;
+}
+
+.sw-booking-demo__panel {
+	position: relative;
+	z-index: 1;
+	width: min(100%, 26rem);
+	max-height: min(92vh, 40rem);
+	overflow-y: auto;
+	background: var(--color-surface);
+	color: var(--color-text);
+	border-radius: var(--radius-md) var(--radius-md) 0 0;
+	padding: var(--space-5) var(--space-4) var(--space-4);
+	box-shadow: var(--shadow-md);
+}
+
+.sw-booking-demo__head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: var(--space-3);
+	margin-bottom: var(--space-3);
+}
+
+.sw-booking-demo__badge {
+	margin: 0 0 0.35rem;
+	font-family: var(--font-body);
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--color-accent);
+}
+
+.sw-booking-demo__title {
+	margin: 0;
+	font-family: var(--font-heading);
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.2;
+	color: var(--color-brand-dark);
+}
+
+.sw-booking-demo__close {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 44px;
+	height: 44px;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	background: var(--color-bg);
+	color: var(--color-brand-dark);
+	font-size: 1.75rem;
+	line-height: 1;
+}
+
+.sw-booking-demo__note,
+.sw-booking-demo__hint,
+.sw-booking-demo__success {
+	margin: 0 0 var(--space-4);
+	font-family: var(--font-body);
+	font-size: var(--fs-sm);
+	line-height: 1.55;
+	color: var(--color-text-muted);
+}
+
+.sw-booking-demo__doctor {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	margin-bottom: var(--space-4);
+	padding: var(--space-3);
+	background: var(--color-bg);
+	border-radius: var(--radius-sm);
+	border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+}
+
+.sw-booking-demo__avatar {
+	display: grid;
+	place-items: center;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	background: var(--color-brand-dark);
+	color: var(--color-white);
+	font-family: var(--font-body);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+}
+
+.sw-booking-demo__name {
+	margin: 0 0 0.2rem;
+	font-family: var(--font-body);
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--color-brand-dark);
+}
+
+.sw-booking-demo__meta {
+	margin: 0;
+	font-size: 0.75rem;
+	color: var(--color-text-muted);
+}
+
+.sw-booking-demo__day {
+	margin-bottom: var(--space-3);
+}
+
+.sw-booking-demo__label {
+	margin: 0 0 0.25rem;
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-text-muted);
+}
+
+.sw-booking-demo__date {
+	margin: 0;
+	font-family: var(--font-body);
+	font-size: 1rem;
+	font-weight: 500;
+	color: var(--color-brand-dark);
+	text-transform: capitalize;
+}
+
+.sw-booking-demo__slots {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--space-2);
+	margin-bottom: var(--space-4);
+}
+
+.sw-booking-demo__slot {
+	min-height: 2.75rem;
+	padding: 0.5rem;
+	border: 1.5px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	background: var(--color-bg);
+	color: var(--color-brand-dark);
+	font-family: var(--font-body);
+	font-size: 0.875rem;
+	font-weight: 500;
+}
+
+.sw-booking-demo__slot:hover,
+.sw-booking-demo__slot:focus-visible {
+	border-color: var(--color-brand);
+}
+
+.sw-booking-demo__slot.is-selected {
+	border-color: var(--color-brand);
+	background: color-mix(in srgb, var(--color-brand) 10%, var(--color-bg));
+	color: var(--color-brand-dark);
+}
+
+.sw-booking-demo__submit {
+	width: 100%;
+	margin-bottom: var(--space-3);
+}
+
+.sw-booking-demo__success {
+	color: var(--color-brand);
+	font-weight: 500;
+}
+
+.sw-booking-demo__hint {
+	margin-bottom: 0;
+	font-size: 0.75rem;
+}
+
+@media (min-width: 640px) {
+	.sw-booking-demo {
+		place-items: center;
+		padding: var(--space-5);
+	}
+
+	.sw-booking-demo__panel {
+		border-radius: var(--radius-md);
+		padding: var(--space-5);
+	}
+}

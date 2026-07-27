@@ -1,0 +1,50 @@
+/**
+ * Forms — contact form field styling, honeypot hidden, error states.
+ */
+
+.sw-form {
+	display: grid;
+	gap: var(--space-3);
+	margin-top: var(--space-4);
+}
+
+.sw-form__field {
+	display: grid;
+	gap: var(--space-1);
+}
+
+.sw-form__field label {
+	font-size: var(--fs-sm);
+	font-weight: 600;
+	color: var(--color-text);
+}
+
+.sw-form__field input,
+.sw-form__field textarea {
+	padding: var(--space-2) var(--space-3);
+	border: 1.5px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	background: var(--color-surface);
+	min-height: 44px;
+}
+
+.sw-form__field textarea {
+	min-height: 120px;
+	resize: vertical;
+}
+
+.sw-form__field input:invalid:not(:placeholder-shown) {
+	border-color: var(--color-accent-dark);
+}
+
+/* Honeypot: hidden from sighted users and assistive tech alike.
+   display:none is intentionally avoided for the wrapper because some
+   spam bots skip fields with display:none — absolute positioning off
+   canvas is more effective while aria-hidden keeps screen readers out. */
+.sw-form__honeypot {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}

@@ -1,0 +1,14 @@
+/**
+ * FAQ accordion — generic base for native <details>/<summary>.
+ * Homepage editorial presentation lives in sections/_faq-editorial.css
+ * and must import after this file.
+ */
+
+.sw-faq__question {
+	cursor: pointer;
+	list-style: none;
+}
+
+.sw-faq__question::-webkit-details-marker {
+	display: none;
+}
